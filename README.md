@@ -1,2 +1,94 @@
 # Algorithms in Java
 This repository contains various algorithm and data structure implementations in Java 8 that I have been practising recently.
+
+Here are the list of algorithm problems and implementations:
+
+## Arrays and Strings I
+- [Clone even numbers in the array](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/arrays/Numbers.java#L5)
+- [Find a pair that equals to the given sum](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/arrays/Numbers.java#L54)
+- [Rearrange all zeros (or num) at the start](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/arrays/Numbers.java#L109)
+- [Rearrange all zeros (num) at the end](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/arrays/Numbers.java#L156)
+- [Swap two numbers in an array without temporary variable](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/arrays/Numbers.java#L224)
+- [Arrange numbers in three groups based on pivot (Dutch Flag)](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/arrays/Numbers.java#L178)
+- [Find a subarray with maximum sum](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/arrays/Numbers.java#L250)
+- [Find a subarray that equals to the sum](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/arrays/Numbers.java#L300)
+- [Reverse words in a sentence](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/strings/Strings.java#L12)
+- [Find longest unique substring](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/strings/Strings.java#L142)
+## Search
+- Find an item (number, object) in a sorted array (Generic Binary Search)
+- Search number in an array With duplicates
+- Record and move on
+- Special tricks
+## Recursion & Backtracking
+- Memoization
+- Auxiliary Buffers
+- Backtracking
+## Linked List
+- Append function
+- Delete nodes
+- Slow and fast pointer
+- Linked Hash Table
+## Stack
+- Stacks as restriction
+- Stack with max
+- Expression and evaluation
+## Queue
+- Sliding window
+- Queue with Max
+- Dynamic Programming
+## Arrays and Strings II
+- Max diff
+- 2D arrays
+## Arrays and Strings III
+- Add/Multiply
+- Special Tricks
+## Hashtable
+- Hash Table and Hash
+- Hash functions
+- String search
+## Graph I
+- [Depth first search](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/graphs/Graphs.java#L6)
+- [Breadth first search](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/graphs/Graphs.java#L32)
+- [Topological sort recursive](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/graphs/Graphs.java#L80)
+- [Topological sort iterative](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/graphs/Graphs.java#L113)
+- Least number of semesters required to complete a list of courses with prerequisites
+- Diameter of a directed graph, or the longest path of a directed graph
+## Linesweep
+- Skyline problem
+## Heaps
+## Sorting
+- Selection algorithm
+- Merge sort
+- Quick sort
+- Stability and large data
+- Special tricks
+## Bit manipulation
+- Find even occurrences in an array with odd numbers
+## Graph II
+- Detecting cycles
+- Bipartite Graph
+- Connected Components
+## Binary Trees
+- [In-order traversal](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L14)
+- [Pre-order traversal](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L29)
+- [Post-order traversal](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L43)
+- [In-order traversal without recursion](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L62)
+- [Height of a binary tree (Top to Bottom Approach)](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L104)
+- [Height of a binary tree (Bottom to Top Approach)](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L141)
+- [Check if a binary tree is balanced or not](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L161)
+- [Find the diameter of a binary tree](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L198)
+- LCA in a binary tree
+- Given a binary tree print all paths from root node
+- Given inorder and preorder traversals of a binary tree, reconstruct the binary tree
+## Binary Search Tree
+- Record and Move On
+- Successor
+- LCA in a binary search tree
+- Building Balanced BSt
+- Trie
+## Majority Search
+- Search n/2 majority
+- Search n/k majority
+
+
+  
