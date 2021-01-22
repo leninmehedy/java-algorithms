@@ -146,4 +146,41 @@ public class BTrees {
 
         return Math.max(leftHeight, rightHeight) + 1;
     }
+
+    /**
+     * Check if a binary tree is balanced or not
+     *
+     * If left or right subtree is not balance, the tree is not balanced
+     * The difference between the height of the left subtree and the right subtree should be at most 1
+     *
+     * @param root
+     * @return -1 if it is not balanced otherwise it returns a positive integer(i.e. height + 1)
+     */
+    public static boolean isBalanced(BTreeNode root) {
+        int val = isBalancedChecker(root);
+        return val != -1;
+    }
+
+    private static int isBalancedChecker(BTreeNode root) {
+        if (null == root) {
+            return 0;
+        }
+
+        int leftHeight = isBalancedChecker(root.getLeft());
+        if (leftHeight == -1) {
+            return -1;
+        }
+
+        int rightHeight = isBalancedChecker(root.getRight());
+        if (rightHeight == -1) {
+            return -1;
+        }
+
+        int diff = Math.abs(leftHeight - rightHeight);
+        if (diff > 1) {
+            return -1;
+        }
+
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
 }

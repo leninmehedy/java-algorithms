@@ -134,4 +134,27 @@ class BTreesTest {
         assertEquals(-1, BTrees.heightBottom2Top(null));
         assertEquals(2, BTrees.heightBottom2Top(root));
     }
+
+    @Test
+    void isBalanced() {
+        List<BTreeNode> nodes = new ArrayList<>();
+        BTreeNode root = setup(nodes);
+
+        assertEquals(true, BTrees.isBalanced(null));
+        assertEquals(true, BTrees.isBalanced(root));
+
+        // make an imbalanced tree
+        root.getLeft().getLeft().setLeft(new BTreeNode(100));
+        root.getLeft().getLeft().getLeft().setLeft(new BTreeNode(101));
+        List<Integer> ret = new ArrayList<>();
+        BTrees.inOrder(root, ret);
+        System.out.println(Arrays.toString(ret.toArray()));
+        ret.clear();
+        BTrees.preOrder(root, ret);
+        System.out.println(Arrays.toString(ret.toArray()));
+
+        assertEquals(false, BTrees.isBalanced(root));
+
+
+    }
 }
