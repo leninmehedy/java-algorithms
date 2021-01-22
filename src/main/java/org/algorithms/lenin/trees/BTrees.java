@@ -93,7 +93,7 @@ public class BTrees {
     /**
      * Find the height of the binary tree
      *
-     * This is a top down approach where we pass the height of the parent to the children
+     * This is a top down approach where we pass the depth of the parent to the children
      * and then compute the max height as we traverse various paths recursively
      *
      * @param root
