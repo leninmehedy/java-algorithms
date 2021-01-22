@@ -9,7 +9,7 @@ import java.util.Stack;
 
 public class BTrees {
     public static final String TREE_HEIGHT = "height";
-    public static final String TREE_DIAMETER = "diameter";
+    public static final String TREE_LONGEST_PATH = "longestPath";
 
     public static void inOrder(BTreeNode root, List<Integer> ret) {
         if (null == ret) {
@@ -197,8 +197,8 @@ public class BTrees {
      */
     public static int diameter(BTreeNode root) {
         Map<String, Integer> ret = diameterHelper(root);
-        if (ret.get(TREE_DIAMETER) > 0) {
-            return ret.get(TREE_DIAMETER) - 1;
+        if (ret.get(TREE_LONGEST_PATH) > 0) {
+            return ret.get(TREE_LONGEST_PATH) - 1;
         }
         return 0;
     }
@@ -206,7 +206,7 @@ public class BTrees {
     private static Map<String, Integer> diameterHelper(BTreeNode root) {
         Map<String, Integer> ret = new HashMap<>();
         ret.put(TREE_HEIGHT, 0);
-        ret.put(TREE_DIAMETER, 0);
+        ret.put(TREE_LONGEST_PATH, 0);
         if (null == root) {
             return ret;
         }
@@ -218,9 +218,9 @@ public class BTrees {
         ret.put(TREE_HEIGHT, curHeight);
 
         int longestPathThroughNode = left.get(TREE_HEIGHT) + right.get(TREE_HEIGHT) + 1;
-        int longestPathSubtree = Math.max(left.get(TREE_DIAMETER), right.get(TREE_DIAMETER));
-        int curDiameter = Math.max(longestPathThroughNode, longestPathSubtree);
-        ret.put(TREE_DIAMETER, curDiameter);
+        int longestPathSubtree = Math.max(left.get(TREE_LONGEST_PATH), right.get(TREE_LONGEST_PATH));
+        int longestPath = Math.max(longestPathThroughNode, longestPathSubtree);
+        ret.put(TREE_LONGEST_PATH, longestPath);
 
         return ret;
     }
