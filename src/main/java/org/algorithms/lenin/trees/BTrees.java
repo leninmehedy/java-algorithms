@@ -2,12 +2,14 @@ package org.algorithms.lenin.trees;
 
 import org.algorithms.lenin.graphs.State;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
 public class BTrees {
     public static final String TREE_HEIGHT = "height";
+    public static final String TREE_DIAMETER = "diameter";
 
     public static void inOrder(BTreeNode root, List<Integer> ret) {
         if (null == ret) {
@@ -182,5 +184,44 @@ public class BTrees {
         }
 
         return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    /**
+     * Find the diameter of a binary tree
+     *
+     * Diameter is the longest path from one node to another in the tree.
+     * Diameter not necessarily goes through the tree root.
+     *
+     * @param root
+     * @return
+     */
+    public static int diameter(BTreeNode root) {
+        Map<String, Integer> ret = diameterHelper(root);
+        if (ret.get(TREE_DIAMETER) > 0) {
+            return ret.get(TREE_DIAMETER) - 1;
+        }
+        return 0;
+    }
+
+    private static Map<String, Integer> diameterHelper(BTreeNode root) {
+        Map<String, Integer> ret = new HashMap<>();
+        ret.put(TREE_HEIGHT, 0);
+        ret.put(TREE_DIAMETER, 0);
+        if (null == root) {
+            return ret;
+        }
+
+        Map<String, Integer> left = diameterHelper(root.getLeft());
+        Map<String, Integer> right = diameterHelper(root.getRight());
+
+        int curHeight = Math.max(left.get(TREE_HEIGHT), right.get(TREE_HEIGHT)) + 1;
+        ret.put(TREE_HEIGHT, curHeight);
+
+        int longestPathThroughNode = left.get(TREE_HEIGHT) + right.get(TREE_HEIGHT) + 1;
+        int longestPathSubtree = Math.max(left.get(TREE_DIAMETER), right.get(TREE_DIAMETER));
+        int curDiameter = Math.max(longestPathThroughNode, longestPathSubtree);
+        ret.put(TREE_DIAMETER, curDiameter);
+
+        return ret;
     }
 }

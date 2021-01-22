@@ -157,4 +157,14 @@ class BTreesTest {
 
 
     }
+
+    @Test
+    void diameter() {
+        List<BTreeNode> nodes = new ArrayList<>();
+        BTreeNode root = setup(nodes);
+
+        assertEquals(0, BTrees.diameter(null));
+        assertEquals(4, BTrees.diameter(root));
+        assertEquals(2, BTrees.diameter(root.getLeft()));
+    }
 }
