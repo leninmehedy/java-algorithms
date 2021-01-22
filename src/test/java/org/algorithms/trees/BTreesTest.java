@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class BTreesTest {
 
@@ -80,5 +81,23 @@ class BTreesTest {
         List<Integer> expected = Arrays.asList(new Integer[]{0, 1, 2, 5, 6, 4, 3});
         BTrees.postOrder(root, ret);
         assertArrayEquals(expected.toArray(), ret.toArray());
+    }
+
+    @Test
+    void inOrderIterative() {
+        List<BTreeNode> nodes = new ArrayList<>();
+        BTreeNode root = setup(nodes);
+
+        List<Integer> ret = new ArrayList<>();
+        BTrees.inOrderIterative(null, ret);
+        assertArrayEquals(new Integer[0], ret.toArray());
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            BTrees.inOrderIterative(root, null);
+        });
+
+        List<Integer> expInOrder = Arrays.asList(new Integer[]{0, 2, 1, 3, 5, 4, 6});
+        BTrees.inOrderIterative(root, ret);
+        assertArrayEquals(expInOrder.toArray(), ret.toArray());
     }
 }
