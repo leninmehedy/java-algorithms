@@ -1,6 +1,6 @@
-package org.algorithms.trees;
+package org.algorithms.lenin.trees;
 
-import org.algorithms.graphs.State;
+import org.algorithms.lenin.graphs.State;
 
 import java.util.List;
 import java.util.Stack;

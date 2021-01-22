@@ -1,4 +1,4 @@
-package org.algorithms.arrays;
+package org.algorithms.lenin.arrays;
 
 public class Numbers {
     /**

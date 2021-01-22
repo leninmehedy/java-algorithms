@@ -1,4 +1,4 @@
-package org.algorithms.strings;
+package org.algorithms.lenin.strings;
 
 import org.junit.jupiter.api.Test;
 

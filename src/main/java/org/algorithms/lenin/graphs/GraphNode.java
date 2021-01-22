@@ -1,4 +1,4 @@
-package org.algorithms.graphs;
+package org.algorithms.lenin.graphs;
 
 import java.util.ArrayList;
 import java.util.List;

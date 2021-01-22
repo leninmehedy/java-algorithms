@@ -1,4 +1,4 @@
-package org.algorithms.search;
+package org.algorithms.lenin.search;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,4 +1,4 @@
-package org.algorithms.trees;
+package org.algorithms.lenin.trees;
 
 import org.junit.jupiter.api.Test;
 

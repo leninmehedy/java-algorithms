@@ -1,4 +1,4 @@
-package org.algorithms.search;
+package org.algorithms.lenin.search;
 
 public class Search {
     public static <T extends Comparable<T>> int binary(T[] items, T target) {

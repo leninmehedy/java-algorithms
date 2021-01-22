@@ -1,6 +1,6 @@
-package org.algorithms.graphs;
+package org.algorithms.lenin.graphs;
 
-import org.algorithms.trees.BTreeNode;
+import org.algorithms.lenin.trees.BTreeNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
