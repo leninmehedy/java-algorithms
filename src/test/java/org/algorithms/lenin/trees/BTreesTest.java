@@ -2,12 +2,9 @@ package org.algorithms.lenin.trees;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BTreesTest {
 
@@ -99,5 +96,42 @@ class BTreesTest {
         List<Integer> expInOrder = Arrays.asList(new Integer[]{0, 2, 1, 3, 5, 4, 6});
         BTrees.inOrderIterative(root, ret);
         assertArrayEquals(expInOrder.toArray(), ret.toArray());
+    }
+
+    @Test
+    void heightTop2Bottom() {
+        List<BTreeNode> nodes = new ArrayList<>();
+        BTreeNode root = setup(nodes);
+        Map<String, Integer> ret = new HashMap<>();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            BTrees.heightTop2Bottom(null, -1, ret);
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            BTrees.heightTop2Bottom(null, 0, null);
+        });
+
+        // null root will just return ret with initialized height
+        BTrees.heightTop2Bottom(null, 0, ret);
+        assertEquals(0, ret.get(BTrees.TREE_HEIGHT));
+
+        // null root will just return the ret as it is
+        ret.put(BTrees.TREE_HEIGHT, -1);
+        BTrees.heightTop2Bottom(null, 0, ret);
+        assertEquals(-1, ret.get(BTrees.TREE_HEIGHT));
+        ret.clear();
+
+        BTrees.heightTop2Bottom(root, 0, ret);
+        assertEquals(2, ret.get(BTrees.TREE_HEIGHT));
+    }
+
+    @Test
+    void heightBottom2Top() {
+        List<BTreeNode> nodes = new ArrayList<>();
+        BTreeNode root = setup(nodes);
+
+        assertEquals(-1, BTrees.heightBottom2Top(null));
+        assertEquals(2, BTrees.heightBottom2Top(root));
     }
 }

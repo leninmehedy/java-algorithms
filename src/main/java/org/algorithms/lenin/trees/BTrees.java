@@ -3,9 +3,12 @@ package org.algorithms.lenin.trees;
 import org.algorithms.lenin.graphs.State;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 public class BTrees {
+    public static final String TREE_HEIGHT = "height";
+
     public static void inOrder(BTreeNode root, List<Integer> ret) {
         if (null == ret) {
             throw new IllegalArgumentException("Return list cannot be null");
@@ -85,5 +88,62 @@ public class BTrees {
             }
         }
 
+    }
+
+    /**
+     * Find the height of the binary tree
+     *
+     * This is a top down approach where we pass the height of the parent to the children
+     * and then compute the max height as we traverse various paths recursively
+     *
+     * @param root
+     * @return
+     */
+    public static void heightTop2Bottom(BTreeNode root, Integer curDepth, Map<String, Integer> ret) {
+        if (null == ret) {
+            throw new IllegalArgumentException("Return map object cannot be null");
+        }
+
+        if (curDepth < 0) {
+            throw new IllegalArgumentException("Current depth of the tree cannot be negative");
+        }
+
+        // initialize max height
+        if (ret.containsKey(TREE_HEIGHT) == false) {
+            ret.put(TREE_HEIGHT, 0);
+        }
+
+        if (null == root) {
+            return;
+        }
+
+        if (curDepth > ret.get(TREE_HEIGHT)) {
+            // if current depth is higher than previous height,
+            // update the height of the tree to current depth
+            ret.put(TREE_HEIGHT, curDepth);
+        }
+
+        heightTop2Bottom(root.getLeft(), curDepth + 1, ret);
+        heightTop2Bottom(root.getRight(), curDepth + 1, ret);
+    }
+
+    /**
+     * Find the height of the binary tree
+     *
+     * This is a bottom to top approach where we compute the height using below formula:
+     *   height = max(height of left sub tree, height of right sub tree) + 1
+     *
+     * @param root
+     * @return
+     */
+    public static int heightBottom2Top(BTreeNode root) {
+        if (null == root) {
+            return -1;
+        }
+
+        int leftHeight = heightBottom2Top(root.getLeft());
+        int rightHeight = heightBottom2Top(root.getRight());
+
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 }
