@@ -1,7 +1,7 @@
 # Algorithms in Java
 This repository contains various algorithm and data structure implementations in Java 8 that I have been practising recently.
 
-Here are the list of algorithm problems and implementations:
+Here is the list of algorithm problems and implementations:
 
 ## Arrays and Strings I
 - [Clone even numbers in the array](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/arrays/Numbers.java#L5)
