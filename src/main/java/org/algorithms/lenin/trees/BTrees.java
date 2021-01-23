@@ -2,10 +2,7 @@ package org.algorithms.lenin.trees;
 
 import org.algorithms.lenin.graphs.State;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 public class BTrees {
     public static final String TREE_HEIGHT = "height";
@@ -265,5 +262,45 @@ public class BTrees {
         }
 
         return null;
+    }
+
+    /**
+     * Find all paths to children from root node
+     *
+     * @param root
+     * @param curPath
+     * @param paths
+     */
+    public static void allPaths(BTreeNode root, List<Integer> curPath, List<List<Integer>> paths) {
+        if (null == root) {
+            return;
+        }
+
+        if (null == curPath) {
+            throw new IllegalArgumentException("Cur path cannot be null");
+        }
+
+        if (null == paths) {
+            throw new IllegalArgumentException("Paths cannot be null");
+        }
+
+        curPath.add(root.getVal());
+
+        // if this is a child node,
+        // add the path to it to the list of paths
+        if (root.getLeft() == null || root.getRight() == null) {
+            // make a copy of the path
+            List<Integer> p = new ArrayList<>();
+            p.addAll(curPath);
+
+            // add to the list
+            paths.add(p);
+        } else {
+            allPaths(root.getLeft(), curPath, paths);
+            allPaths(root.getRight(), curPath, paths);
+        }
+
+
+        curPath.remove(curPath.size() - 1);
     }
 }

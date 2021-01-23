@@ -220,4 +220,35 @@ class BTreesTest {
         y = new BTreeNode(7);
         assertEquals(null, BTrees.lca(root, x, y));
     }
+
+    @Test
+    public void allPaths() {
+        List<BTreeNode> nodes = new ArrayList<>();
+        BTreeNode root = setup(nodes);
+
+        List<Integer> curPath = new ArrayList<>();
+        List<List<Integer>> paths = new ArrayList<>();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            BTrees.allPaths(root, null, paths);
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            BTrees.allPaths(root, curPath, null);
+        });
+
+        BTrees.allPaths(null, curPath, paths);
+        assertEquals(0, paths.size());
+
+        List<List<Integer>> expected = new ArrayList<>();
+        expected.add(Arrays.asList(new Integer[]{3, 2, 0}));
+        expected.add(Arrays.asList(new Integer[]{3, 2, 1}));
+        expected.add(Arrays.asList(new Integer[]{3, 4, 5}));
+        expected.add(Arrays.asList(new Integer[]{3, 4, 6}));
+        BTrees.allPaths(root, curPath, paths);
+        assertEquals(expected.size(), paths.size());
+        for (int i = 0; i < paths.size(); i++) {
+            assertArrayEquals(expected.get(i).toArray(), paths.get(i).toArray());
+        }
+    }
 }
