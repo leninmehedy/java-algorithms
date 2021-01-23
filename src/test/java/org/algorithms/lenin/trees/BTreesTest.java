@@ -221,6 +221,55 @@ class BTreesTest {
     }
 
     @Test
+    void lca2() {
+        List<BTreeNode> nodes = new ArrayList<>();
+        BTreeNode root = setup(nodes);
+        BTreeNode x = nodes.get(0);
+        BTreeNode y = nodes.get(1);
+
+        assertEquals(null, BTrees.lca2(null, x, y));
+        assertThrows(IllegalArgumentException.class, () -> {
+            BTrees.lca2(root, null, nodes.get(1));
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            BTrees.lca2(root, nodes.get(0), null);
+        });
+
+        // same subtree
+        assertEquals(nodes.get(2), BTrees.lca2(root, x, y));
+
+        // different subtree
+        y = nodes.get(6);
+        assertEquals(root, BTrees.lca2(root, x, y));
+
+        // parent and left child
+        x = nodes.get(4);
+        y = nodes.get(5);
+        assertEquals(x, BTrees.lca2(root, x, y));
+
+        // parent and right child
+        x = nodes.get(4);
+        y = nodes.get(6);
+        assertEquals(x, BTrees.lca2(root, x, y));
+
+        // parent and right most child
+        x = nodes.get(3);
+        y = nodes.get(6);
+        assertEquals(x, BTrees.lca2(root, x, y));
+
+        // parent and left most child
+        x = nodes.get(3);
+        y = nodes.get(6);
+        assertEquals(x, BTrees.lca2(root, x, y));
+
+        // parent and left most child
+        x = nodes.get(6);
+        y = nodes.get(3);
+        assertEquals(y, BTrees.lca2(root, x, y));
+    }
+
+    @Test
     public void allPaths() {
         List<BTreeNode> nodes = new ArrayList<>();
         BTreeNode root = setup(nodes);

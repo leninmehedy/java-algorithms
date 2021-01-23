@@ -266,6 +266,37 @@ public class BTrees {
     }
 
     /**
+     * Find LCA without having parent pointers
+     *
+     * Assume that both the target nodes are in the tree. If this assumption is not correct,
+     * we shall have to return a pair of nodes instead of just a single node and implementation
+     * would differ than what it is in below.
+     *
+     */
+    public static BTreeNode lca2(BTreeNode node, BTreeNode x, BTreeNode y) {
+        if (null == node || node == x || node == y) {
+            return node;
+        }
+
+        if (null == x || null == y) {
+            throw new IllegalArgumentException("Target nodes cannot be null");
+        }
+
+        BTreeNode leftLCA = lca2(node.getLeft(), x, y);
+        BTreeNode rightLCA = lca2(node.getRight(), x, y);
+
+        if (null == leftLCA && null == rightLCA) {
+            return null;
+        }
+
+        if (null != leftLCA && null != rightLCA) {
+            return node;
+        }
+
+        return leftLCA != null ? leftLCA : rightLCA;
+    }
+
+    /**
      * Find all paths to children from root node
      *
      * @param root
@@ -366,8 +397,8 @@ public class BTrees {
     }
 
     private static BTreeNode reconstructHelper2(Map<Integer, Integer> inOrderMap,
-                                               List<Integer> inOrder, int inStart, int inEnd,
-                                               List<Integer> postOrder, int postStart, int postEnd) {
+                                                List<Integer> inOrder, int inStart, int inEnd,
+                                                List<Integer> postOrder, int postStart, int postEnd) {
 
         if ((inEnd - inStart) != (postEnd - postStart)) {
             throw new IllegalArgumentException("In-order and Post-order traversal array must be of same length");
