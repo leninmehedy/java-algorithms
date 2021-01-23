@@ -370,7 +370,7 @@ public class BTrees {
                                                List<Integer> postOrder, int postStart, int postEnd) {
 
         if ((inEnd - inStart) != (postEnd - postStart)) {
-            throw new IllegalArgumentException("In-order and Pre-order traversal array must be of same length");
+            throw new IllegalArgumentException("In-order and Post-order traversal array must be of same length");
         }
 
         if (inStart > inEnd || postStart > postEnd) {
