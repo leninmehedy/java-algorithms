@@ -224,4 +224,46 @@ public class BTrees {
 
         return ret;
     }
+
+    /**
+     * Find the lowest common ancestor of two nodes in a binary tree
+     *
+     * @param root root of the tree
+     * @param x target node X
+     * @param y target node Y
+     * @return lowest common ancestor of x and y or null if it does not exists
+     */
+    public static BTreeNode lca(BTreeNode root, BTreeNode x, BTreeNode y) {
+        if (null == root) {
+            return null;
+        }
+
+        if (null == x || null == y) {
+            throw new IllegalArgumentException("Target tree nodes x and y cannot be null");
+        }
+
+        int xHeight = BTrees.heightBottom2Top(x);
+        int yHeight = BTrees.heightBottom2Top(y);
+
+        while (xHeight < yHeight && null != x) {
+            x = x.getParent();
+            xHeight++;
+        }
+
+        while (yHeight < xHeight && null != y) {
+            y = y.getParent();
+            yHeight++;
+        }
+
+        while (x != y && null != x && null != y) {
+            x = x.getParent();
+            y = y.getParent();
+        }
+
+        if (x == y) {
+            return x;
+        }
+
+        return null;
+    }
 }

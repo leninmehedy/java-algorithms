@@ -6,6 +6,7 @@ public class BTreeNode {
     private int val;
     private BTreeNode left;
     private BTreeNode right;
+    private BTreeNode parent;
     private State state;
 
     public BTreeNode(int val) {
@@ -36,6 +37,7 @@ public class BTreeNode {
     }
 
     public void setLeft(BTreeNode n) {
+        n.parent = this;
         this.left = n;
     }
 
@@ -43,9 +45,15 @@ public class BTreeNode {
         return this.left;
     }
 
+    public BTreeNode getParent() {
+        return this.parent;
+    }
+
     public void setRight(BTreeNode n) {
+        n.parent = this;
         this.right = n;
     }
+
     public BTreeNode getRight() {
         return this.right;
     }

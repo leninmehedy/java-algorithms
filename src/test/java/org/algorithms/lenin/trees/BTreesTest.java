@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class BTreesTest {
 
     BTreeNode setup(List<BTreeNode> nodes) {
-        nodes = new ArrayList<>();
         for (int i = 0; i <= 6; i++) {
             nodes.add(new BTreeNode(i));
         }
@@ -166,5 +165,59 @@ class BTreesTest {
         assertEquals(0, BTrees.diameter(null));
         assertEquals(4, BTrees.diameter(root));
         assertEquals(2, BTrees.diameter(root.getLeft()));
+    }
+
+    @Test
+    void lca() {
+        List<BTreeNode> nodes = new ArrayList<>();
+        BTreeNode root = setup(nodes);
+        BTreeNode x = nodes.get(0);
+        BTreeNode y = nodes.get(1);
+
+        assertEquals(null, BTrees.lca(null, x, y));
+        assertThrows(IllegalArgumentException.class, () -> {
+           BTrees.lca(root, null, nodes.get(1));
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            BTrees.lca(root, nodes.get(0), null);
+        });
+
+        // same subtree
+        assertEquals(nodes.get(2), BTrees.lca(root, x, y));
+
+        // different subtree
+        y = nodes.get(6);
+        assertEquals(root, BTrees.lca(root, x, y));
+
+        // parent and left child
+        x = nodes.get(4);
+        y = nodes.get(5);
+        assertEquals(x, BTrees.lca(root, x, y));
+
+        // parent and right child
+        x = nodes.get(4);
+        y = nodes.get(6);
+        assertEquals(x, BTrees.lca(root, x, y));
+
+        // parent and right most child
+        x = nodes.get(3);
+        y = nodes.get(6);
+        assertEquals(x, BTrees.lca(root, x, y));
+
+        // parent and left most child
+        x = nodes.get(3);
+        y = nodes.get(6);
+        assertEquals(x, BTrees.lca(root, x, y));
+
+        // parent and left most child
+        x = nodes.get(6);
+        y = nodes.get(3);
+        assertEquals(y, BTrees.lca(root, x, y));
+
+        // nodes with no LCA
+        x = nodes.get(6);
+        y = new BTreeNode(7);
+        assertEquals(null, BTrees.lca(root, x, y));
     }
 }
