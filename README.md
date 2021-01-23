@@ -77,10 +77,11 @@ Here is the list of algorithm problems and implementations:
 - [Height of a binary tree (Bottom to Top Approach)](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L139)
 - [Check if a binary tree is balanced or not](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L161)
 - [Find the diameter of a binary tree](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L196)
-- [LCA in a binary tree](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L234)
-- [Given a binary tree find all paths to children from root node](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L275)
-- [Build binary tree from in-order and pre-order traversals](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L311)
-- [Build binary tree from in-order and post-order traversals](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L357)
+- [LCA in a binary tree with parent pointers](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L234)
+- [LCA in a binary tree without parent pointers](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L276)
+- [Given a binary tree find all paths to children from root node](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L306)
+- [Build binary tree from in-order and pre-order traversals](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L342)
+- [Build binary tree from in-order and post-order traversals](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L388)
 ## Binary Search Tree
 - Record and Move On
 - Successor
