@@ -23,7 +23,7 @@ public class BTrees {
         inOrder(root.getRight(), ret);
     }
 
-    public static void preOrder(BTreeNode root, List<Integer>ret) {
+    public static void preOrder(BTreeNode root, List<Integer> ret) {
         if (null == ret) {
             throw new IllegalArgumentException("Return list cannot be null");
         }
@@ -53,8 +53,9 @@ public class BTrees {
 
     /**
      * In order traversal without recursion
+     *
      * @param root BTreeNode
-     * @param ret List<Integer> containing the traversal result
+     * @param ret  List<Integer> containing the traversal result
      */
     public static void inOrderIterative(BTreeNode root, List<Integer> ret) {
         if (null == ret) {
@@ -68,7 +69,7 @@ public class BTrees {
         Stack<BTreeNode> stack = new Stack<>();
         stack.push(root);
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             BTreeNode node = stack.pop();
             if (node.getState() == State.VISITING) {
                 ret.add(node.getVal());
@@ -91,7 +92,7 @@ public class BTrees {
 
     /**
      * Find the height of the binary tree
-     *
+     * <p>
      * This is a top down approach where we pass the depth of the parent to the children
      * and then compute the max height as we traverse various paths recursively
      *
@@ -128,9 +129,9 @@ public class BTrees {
 
     /**
      * Find the height of the binary tree
-     *
+     * <p>
      * This is a bottom to top approach where we compute the height using below formula:
-     *   height = max(height of left sub tree, height of right sub tree) + 1
+     * height = max(height of left sub tree, height of right sub tree) + 1
      *
      * @param root
      * @return
@@ -148,7 +149,7 @@ public class BTrees {
 
     /**
      * Check if a binary tree is balanced or not
-     *
+     * <p>
      * If left or right subtree is not balance, the tree is not balanced
      * The difference between the height of the left subtree and the right subtree should be at most 1
      *
@@ -185,7 +186,7 @@ public class BTrees {
 
     /**
      * Find the diameter of a binary tree
-     *
+     * <p>
      * Diameter is the longest path from one node to another in the tree.
      * Diameter not necessarily goes through the tree root.
      *
@@ -226,8 +227,8 @@ public class BTrees {
      * Find the lowest common ancestor of two nodes in a binary tree
      *
      * @param root root of the tree
-     * @param x target node X
-     * @param y target node Y
+     * @param x    target node X
+     * @param y    target node Y
      * @return lowest common ancestor of x and y or null if it does not exists
      */
     public static BTreeNode lca(BTreeNode root, BTreeNode x, BTreeNode y) {
@@ -302,5 +303,51 @@ public class BTrees {
 
 
         curPath.remove(curPath.size() - 1);
+    }
+
+    /**
+     * Reconstruct a binary tree from in-order and pre-order traversals
+     */
+    public static BTreeNode buildTree(List<Integer> inOrder, List<Integer> preOrder) {
+        Map<Integer, Integer> inOrderMap = new HashMap<>();
+        for (int i = 0; i < inOrder.size(); i++) {
+            inOrderMap.put(inOrder.get(i), i);
+        }
+
+        return reconstructHelper(inOrderMap,
+                inOrder, 0, inOrder.size() - 1,
+                preOrder, 0, preOrder.size() - 1);
+    }
+
+    private static BTreeNode reconstructHelper(Map<Integer, Integer> inOrderMap,
+                                               List<Integer> inOrder, int inStart, int inEnd,
+                                               List<Integer> preOrder, int preStart, int preEnd) {
+
+        if ((inEnd - inStart) != (preEnd - preStart)) {
+            throw new IllegalArgumentException("In-order and Pre-order traversal array must be of same length");
+        }
+
+        if (inStart > inEnd || preStart > preEnd) {
+            return null;
+        }
+
+        int val = preOrder.get(preStart);
+        BTreeNode root = new BTreeNode(val);
+
+        int k = inOrderMap.get(val);
+        int len = k - inStart;
+        BTreeNode left = reconstructHelper(inOrderMap,
+                inOrder, inStart, k - 1,
+                preOrder, preStart + 1, preStart + len
+        );
+        BTreeNode right = reconstructHelper(inOrderMap,
+                inOrder, k + 1, inEnd,
+                preOrder, preStart + len + 1, preEnd
+        );
+
+        root.setLeft(left);
+        root.setRight(right);
+
+        return root;
     }
 }

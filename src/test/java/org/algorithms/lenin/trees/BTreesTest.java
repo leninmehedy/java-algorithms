@@ -43,8 +43,7 @@ class BTreesTest {
     }
 
     @Test
-    void preOrder() {
-        List<BTreeNode> nodes = new ArrayList<>();
+    void preOrder() { List<BTreeNode> nodes = new ArrayList<>();
         BTreeNode root = setup(nodes);
 
         assertThrows(IllegalArgumentException.class, () -> {
@@ -250,5 +249,33 @@ class BTreesTest {
         for (int i = 0; i < paths.size(); i++) {
             assertArrayEquals(expected.get(i).toArray(), paths.get(i).toArray());
         }
+    }
+
+    @Test
+    public void buildTree() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            BTrees.buildTree(Arrays.asList(new Integer[]{0, 2}), Arrays.asList(new Integer[]{2}));
+        });
+
+        List<BTreeNode> nodes = new ArrayList<>();
+        BTreeNode root = setup(nodes);
+
+        List<Integer> inOrder = new ArrayList<>();
+        BTrees.inOrder(root, inOrder);
+
+        List<Integer> preOrder= new ArrayList<>();
+        BTrees.preOrder(root, preOrder);
+
+        BTreeNode newRoot = BTrees.buildTree(inOrder, preOrder);
+
+        // match the in-order traversal on the new tree
+        List<Integer> ret = new ArrayList<>();
+        BTrees.inOrder(newRoot, ret);
+        assertArrayEquals(inOrder.toArray(), ret.toArray());
+
+        // match the pre-order traversal on the new tree
+        ret.clear();
+        BTrees.preOrder(newRoot, ret);
+        assertArrayEquals(preOrder.toArray(), ret.toArray());
     }
 }

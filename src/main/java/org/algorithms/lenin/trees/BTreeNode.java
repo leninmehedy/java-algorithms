@@ -37,6 +37,10 @@ public class BTreeNode {
     }
 
     public void setLeft(BTreeNode n) {
+        if (null == n) {
+            return;
+        }
+
         n.parent = this;
         this.left = n;
     }
@@ -50,6 +54,10 @@ public class BTreeNode {
     }
 
     public void setRight(BTreeNode n) {
+        if (null == n) {
+            return;
+        }
+
         n.parent = this;
         this.right = n;
     }
