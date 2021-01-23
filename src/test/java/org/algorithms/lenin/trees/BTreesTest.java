@@ -277,5 +277,67 @@ class BTreesTest {
         ret.clear();
         BTrees.preOrder(newRoot, ret);
         assertArrayEquals(preOrder.toArray(), ret.toArray());
+
+
+        // single node tree
+        inOrder = Arrays.asList(new Integer[]{0});
+        preOrder = Arrays.asList(new Integer[]{0});
+        newRoot = BTrees.buildTree(inOrder, preOrder);
+        ret.clear();
+        BTrees.inOrder(newRoot, ret);
+        assertArrayEquals(inOrder.toArray(), ret.toArray());
+
+        // two node tree
+        inOrder = Arrays.asList(new Integer[]{0, 1});
+        preOrder = Arrays.asList(new Integer[]{1, 0});
+        newRoot = BTrees.buildTree(inOrder, preOrder);
+        ret.clear();
+        BTrees.preOrder(newRoot, ret);
+        assertArrayEquals(preOrder.toArray(), ret.toArray());
+    }
+
+    @Test
+    public void buildTree2() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            BTrees.buildTree2(Arrays.asList(new Integer[]{0, 2}), Arrays.asList(new Integer[]{2}));
+        });
+
+        List<BTreeNode> nodes = new ArrayList<>();
+        BTreeNode root = setup(nodes);
+
+        List<Integer> inOrder = new ArrayList<>();
+        BTrees.inOrder(root, inOrder);
+
+        List<Integer> postOrder= new ArrayList<>();
+        BTrees.postOrder(root, postOrder);
+
+        BTreeNode newRoot = BTrees.buildTree2(inOrder, postOrder);
+
+        // match the in-order traversal on the new tree
+        List<Integer> ret = new ArrayList<>();
+        BTrees.inOrder(newRoot, ret);
+        assertArrayEquals(inOrder.toArray(), ret.toArray());
+
+        // match the post-order traversal on the new tree
+        ret.clear();
+        BTrees.postOrder(newRoot, ret);
+        assertArrayEquals(postOrder.toArray(), ret.toArray());
+
+
+        // single node tree
+        inOrder = Arrays.asList(new Integer[]{0});
+        postOrder = Arrays.asList(new Integer[]{0});
+        newRoot = BTrees.buildTree2(inOrder, postOrder);
+        ret.clear();
+        BTrees.inOrder(newRoot, ret);
+        assertArrayEquals(inOrder.toArray(), ret.toArray());
+
+        // two node tree
+        inOrder = Arrays.asList(new Integer[]{0, 1});
+        postOrder = Arrays.asList(new Integer[]{0, 1});
+        newRoot = BTrees.buildTree2(inOrder, postOrder);
+        ret.clear();
+        BTrees.postOrder(newRoot, ret);
+        assertArrayEquals(postOrder.toArray(), ret.toArray());
     }
 }

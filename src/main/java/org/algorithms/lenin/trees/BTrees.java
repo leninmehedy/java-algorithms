@@ -350,4 +350,50 @@ public class BTrees {
 
         return root;
     }
+
+    /**
+     * Reconstruct a binary tree from in-order and post-order traversals
+     */
+    public static BTreeNode buildTree2(List<Integer> inOrder, List<Integer> postOrder) {
+        Map<Integer, Integer> inOrderMap = new HashMap<>();
+        for (int i = 0; i < inOrder.size(); i++) {
+            inOrderMap.put(inOrder.get(i), i);
+        }
+
+        return reconstructHelper2(inOrderMap,
+                inOrder, 0, inOrder.size() - 1,
+                postOrder, 0, postOrder.size() - 1);
+    }
+
+    private static BTreeNode reconstructHelper2(Map<Integer, Integer> inOrderMap,
+                                               List<Integer> inOrder, int inStart, int inEnd,
+                                               List<Integer> postOrder, int postStart, int postEnd) {
+
+        if ((inEnd - inStart) != (postEnd - postStart)) {
+            throw new IllegalArgumentException("In-order and Pre-order traversal array must be of same length");
+        }
+
+        if (inStart > inEnd || postStart > postEnd) {
+            return null;
+        }
+
+        int val = postOrder.get(postEnd);
+        BTreeNode root = new BTreeNode(val);
+
+        int k = inOrderMap.get(val);
+        int len = k - inStart;
+        BTreeNode left = reconstructHelper2(inOrderMap,
+                inOrder, inStart, k - 1,
+                postOrder, postStart, postStart + len - 1
+        );
+        BTreeNode right = reconstructHelper2(inOrderMap,
+                inOrder, k + 1, inEnd,
+                postOrder, postStart + len, postEnd - 1
+        );
+
+        root.setLeft(left);
+        root.setRight(right);
+
+        return root;
+    }
 }
