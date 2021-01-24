@@ -117,5 +117,7 @@ class BinarySearchTreeTest {
 
         n = bst.add(6);
         assertEquals(n, bst.find(6));
+
+        assertNull(bst.find(100));
     }
 }
