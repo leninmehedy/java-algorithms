@@ -65,4 +65,24 @@ public class TreeNode {
     public TreeNode getRight() {
         return this.right;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (null == o) {
+            return false;
+        }
+
+        if (o.getClass() != this.getClass()) {
+            return false;
+        }
+
+        TreeNode n = (TreeNode) o;
+
+        return n.getVal() == this.getVal() &&
+                n.getLeft() == this.getLeft() &&
+                n.getRight() == this.getRight() &&
+                n.getParent() == this.getParent() &&
+                n.getState() == this.getState();
+
+    }
 }

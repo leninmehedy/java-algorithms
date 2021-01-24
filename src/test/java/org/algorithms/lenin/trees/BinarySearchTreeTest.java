@@ -58,4 +58,36 @@ class BinarySearchTreeTest {
         root = setupNotBST(nodes);
         assertNull(BinarySearchTree.isBST(root));
     }
+
+    @Test
+    void add() {
+        BinarySearchTree bst = new BinarySearchTree();
+
+        // Edge cases
+        assertNull(bst.getRoot());
+        bst.add(3);
+        assertNotNull(bst.getRoot());
+        assertEquals(3, bst.getRoot().getVal());
+
+        // Base cases
+        // add a node to the left of the root
+        TreeNode n = bst.add(1);
+        assertEquals(n, bst.getRoot().getLeft());
+
+        // add a node to the right of the root
+        n = bst.add(5);
+        assertEquals(n, bst.getRoot().getRight());
+
+        // add a node to the left subtree
+        n = bst.add(0);
+        assertEquals(n, bst.getRoot().getLeft().getLeft());
+        n = bst.add(2);
+        assertEquals(n, bst.getRoot().getLeft().getRight());
+
+        // add a node to the right subtree
+        n = bst.add(4);
+        assertEquals(n, bst.getRoot().getRight().getLeft());
+        n = bst.add(6);
+        assertEquals(n, bst.getRoot().getRight().getRight());
+    }
 }
