@@ -215,4 +215,48 @@ public class BinarySearchTree {
         return result;
     }
 
+    /**
+     * Find successor of a node in BST
+     *
+     * Solution:
+     *  - If node has right child, find the left most node in that right subtree
+     *  - If node has no right child, search for the node from root and find the last node
+     *  from where we had to traverse left to find the node
+     *  - If node has neither of the above, there is no successor
+     *
+     * Complexity:
+     *  - Space: O(1)
+     *  - Time: O(h)
+     *
+     *  Test cases:
+     *   - Edge cases: null root, single node
+     *   - Base cases: two nodes with left subtree, two nodes with right subtree
+     *   - Regular cases: node with left subtree, node with right subtree, last node of the tree
+     */
+    public TreeNode successor(TreeNode n) {
+        if (null == n || null == this.root) {
+            return null;
+        }
+
+        TreeNode successor = null;
+        if (null != n.getRight()) {
+            successor = n.getRight();
+            while(null != successor.getLeft()) {
+                successor = successor.getLeft();
+            }
+        } else if (null != n.getParent()){
+            TreeNode current = this.root;
+            while (null != current && !current.equals(n)) {
+                if(n.getVal() < current.getVal()) {
+                    successor = current;
+                    current = current.getLeft();
+                } else {
+                    current = current.getRight();
+                }
+            }
+        }
+
+        return successor;
+    }
+
 }

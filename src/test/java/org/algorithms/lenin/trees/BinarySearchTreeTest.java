@@ -227,4 +227,41 @@ class BinarySearchTreeTest {
         assertNotEquals(bst.find(4), bst.findFirst(4));
         assertEquals(bst.find(1), bst.findFirst(1));
     }
+
+    @Test
+    public void successor() {
+        BinarySearchTree bst = new BinarySearchTree();
+
+        // Edge cases : null node or empty tree
+        assertNull(bst.successor(null));
+        assertNull(bst.successor(new TreeNode(0)));
+
+        // Base cases - one node tree
+        TreeNode node4 = bst.add(4);
+        assertNull(bst.successor(node4));
+
+        // Base cases - two nodes with right subtree
+        TreeNode node10 = bst.add(10);
+        assertEquals(node10, bst.successor(node4));
+        assertNull(bst.successor(node10));
+        bst.delete(node10);
+
+        // Base cases - two nodes with left subtree
+        TreeNode node2 = bst.add(2);
+        assertEquals(node4, bst.successor(node2));
+        assertNull(bst.successor(node4));
+
+        // node on the deep left subtree
+        TreeNode node1 = bst.add(1);
+        TreeNode node3 = bst.add(3);
+        assertEquals(bst.getRoot(), bst.successor(node3));
+        assertEquals(node2, bst.successor(node1));
+
+        // left most child of the right subtree
+        bst.add(10);
+        TreeNode node5 = bst.add(5);
+        TreeNode node11 = bst.add(11);
+        assertEquals(node5, bst.successor(node4));
+        assertNull(bst.successor(node11));
+    }
 }
