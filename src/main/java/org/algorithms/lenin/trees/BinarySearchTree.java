@@ -30,7 +30,8 @@ public class BinarySearchTree {
      */
     public static MinMax isBST(TreeNode root) {
         if (null == root) {
-            return null;
+            // return the min = Integer.MAX and max = Integer.MIN for null nodes
+            return new MinMax(Integer.MAX_VALUE, Integer.MIN_VALUE);
         }
 
         if (null == root.getLeft() && null == root.getRight()) {

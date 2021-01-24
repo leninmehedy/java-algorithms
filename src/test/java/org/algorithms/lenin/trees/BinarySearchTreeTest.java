@@ -10,22 +10,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BinarySearchTreeTest {
 
-    TreeNode setupBST(List<TreeNode> nodes) {
-        for (int i = 0; i <= 6; i++) {
-            nodes.add(new TreeNode(i));
-        }
-        TreeNode root = nodes.get(3);
-        root.setLeft(nodes.get(1));
-        root.setRight(nodes.get(5));
-        root.getLeft().setLeft(nodes.get(0));
-        root.getLeft().setRight(nodes.get(2));
-        root.getRight().setLeft(nodes.get(4));
-        root.getRight().setRight(nodes.get(6));
+    private BinarySearchTree setupBST() {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.add(3);
+        bst.add(1);
+        bst.add(5);
+        bst.add(0);
+        bst.add(2);
+        bst.add(4);
+        bst.add(6);
 
-        return root;
+        return bst;
     }
 
-    TreeNode setupNotBST(List<TreeNode> nodes) {
+    private BinarySearchTree setupImbalancedBST() {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.add(3);
+        bst.add(1);
+        bst.add(0);
+        bst.add(10);
+
+        return bst;
+    }
+
+    private TreeNode setupNotBST(List<TreeNode> nodes) {
         for (int i = 0; i <= 6; i++) {
             nodes.add(new TreeNode(i));
         }
@@ -43,20 +51,23 @@ class BinarySearchTreeTest {
     @Test
     void isBST() {
         // edge cases
-        assertNull(BinarySearchTree.isBST(null));
+        assertEquals(new MinMax(Integer.MAX_VALUE, Integer.MIN_VALUE), BinarySearchTree.isBST(null));
 
         // base cases
         assertEquals(new MinMax(0, 0), BinarySearchTree.isBST(new TreeNode(0)));
 
         // valid BST
-        List<TreeNode> nodes = new ArrayList<>();
-        TreeNode root = setupBST(nodes);
-        assertEquals(new MinMax(0, 6), BinarySearchTree.isBST(root));
+        BinarySearchTree bst = setupBST();
+        assertEquals(new MinMax(0, 6), BinarySearchTree.isBST(bst.getRoot()));
 
         // invalid BST
-        nodes.clear();
-        root = setupNotBST(nodes);
+        List<TreeNode> nodes = new ArrayList<>();
+        TreeNode root = setupNotBST(nodes);
         assertNull(BinarySearchTree.isBST(root));
+
+
+        bst = setupImbalancedBST();
+        assertEquals(new MinMax(0, 10), BinarySearchTree.isBST(bst.getRoot()));
     }
 
     @Test
