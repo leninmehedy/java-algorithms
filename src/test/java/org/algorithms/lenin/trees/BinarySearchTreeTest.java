@@ -68,6 +68,10 @@ class BinarySearchTreeTest {
 
         bst = setupImbalancedBST();
         assertEquals(new MinMax(0, 10), BinarySearchTree.isBST(bst.getRoot()));
+
+        // add duplicates
+        bst.add(10);
+        assertEquals(new MinMax(0, 10), BinarySearchTree.isBST(bst.getRoot()));
     }
 
     @Test
@@ -101,6 +105,7 @@ class BinarySearchTreeTest {
         n = bst.add(6);
         assertEquals(n, bst.getRoot().getRight().getRight());
 
+        bst.add(4);
         assertNotNull(BinarySearchTree.isBST(bst.getRoot()));
     }
 
