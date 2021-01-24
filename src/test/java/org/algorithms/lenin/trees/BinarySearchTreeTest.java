@@ -294,7 +294,33 @@ class BinarySearchTreeTest {
 
         // cross subtrees
         assertEquals(node4, bst.lca(node1, node11));
+    }
 
+    @Test
+    public void reconstruct() {
+        // Edge cases
+        assertNull(BinarySearchTree.reconstruct(null));
+        assertNull(BinarySearchTree.reconstruct(new int[0]));
 
+        // Base cases - one node
+        assertEquals(0, BinarySearchTree.reconstruct(new int[]{0}).getVal());
+
+        // Base cases - two nodes (left subtree)
+        TreeNode root = BinarySearchTree.reconstruct(new int[]{2, 4});
+        assertEquals(4, root.getVal());
+        assertEquals(2, root.getLeft().getVal());
+
+        // Base cases - three nodes
+        root = BinarySearchTree.reconstruct(new int[]{2, 4, 10});
+        assertEquals(4, root.getVal());
+        assertEquals(2, root.getLeft().getVal());
+        assertEquals(10, root.getRight().getVal());
+
+        // Regular cases - even nodes
+        root = BinarySearchTree.reconstruct(new int[]{1, 2, 4, 10});
+        assertEquals(4, root.getVal());
+        assertEquals(1, root.getLeft().getVal());
+        assertEquals(2, root.getLeft().getRight().getVal());
+        assertEquals(10, root.getRight().getVal());
     }
 }

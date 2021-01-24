@@ -292,4 +292,50 @@ public class BinarySearchTree {
         return current;
     }
 
+    /**
+     * Reconstruct a BST from a sorted array
+     *
+     * Solution:
+     *  - Find the median and make it a root
+     *  - Recursively form the left subtree and right subtree from left and right parts of the array around the median
+     *
+     *  Complexity:
+     *   - Space: O(n)
+     *   - Time: O(logn)
+     *
+     *  Test cases:
+     *   - Edge cases: empty array
+     *   - Base case: single element, two element, three element arrays
+     *   - Regular case: even items array, odd items array
+     */
+    public static TreeNode reconstruct(int[] items) {
+        if (items == null || items.length == 0) {
+            return null;
+        }
+
+        return reconstructTree(items, 0, items.length);
+    }
+
+    private static TreeNode reconstructTree(int[] items, int start, int end) {
+        if (start > end) {
+            return null;
+        }
+
+        // find median
+        int k = start + (end - start) / 2;
+        if (k >= items.length || k < 0) {
+            return null;
+        }
+
+        // construct the tree
+        TreeNode root =  new TreeNode(items[k]);
+        TreeNode left = reconstructTree(items, start, k - 1);
+        TreeNode right = reconstructTree(items, k + 1, end);
+
+        root.setLeft(left);
+        root.setRight(right);
+
+        return root;
+    }
+
 }
