@@ -136,4 +136,49 @@ public class BinarySearchTree {
 
         return current;
     }
+
+    /**
+     * Delete a node from the binary search tree
+     *
+     * Solution:
+     *
+     * Complexity:
+     *
+     * Test cases:
+     *   - Edge cases: null node
+     *   - Base cases: single node tree, left leaf, right leaf
+     *   - Regular cases: left child with successor, right child with successor
+     */
+    public void delete(TreeNode node) {
+        if (null == node || null == this.root) {
+            return; // nothing to delete
+        }
+
+        if (null == node.getLeft() && null == node.getRight()) {
+            replaceChild(node.getParent(), node, null);
+        } else if(null == node.getLeft()) {
+            replaceChild(node.getParent(), node, node.getRight());
+        } else if (null == node.getRight()) {
+            replaceChild(node.getParent(), node, node.getLeft());
+        } else {
+            TreeNode successor = node.getRight();
+            while (null != successor.getLeft()) {
+                successor = successor.getLeft();
+            }
+            node.setVal(successor.getVal());
+            delete(successor);
+        }
+    }
+
+    private void replaceChild(TreeNode parent, TreeNode oldChild, TreeNode newChild) {
+        if (null == parent) {
+            this.root = newChild;
+        } else if (parent.getLeft() == oldChild) {
+            parent.setLeft(newChild);
+        } else if (parent.getRight() == oldChild) {
+            parent.setRight(newChild);
+        } else {
+            throw new IllegalArgumentException("Invalid parent-child relationship");
+        }
+    }
 }

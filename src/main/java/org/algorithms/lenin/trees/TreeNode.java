@@ -37,12 +37,11 @@ public class TreeNode {
     }
 
     public void setLeft(TreeNode n) {
-        if (null == n) {
-            return;
-        }
-
-        n.parent = this;
         this.left = n;
+
+        if (null != n) {
+            n.parent = this;
+        }
     }
 
     public TreeNode getLeft() {
@@ -54,12 +53,11 @@ public class TreeNode {
     }
 
     public void setRight(TreeNode n) {
-        if (null == n) {
-            return;
-        }
-
-        n.parent = this;
         this.right = n;
+
+        if (null != n) {
+            n.parent = this;
+        }
     }
 
     public TreeNode getRight() {

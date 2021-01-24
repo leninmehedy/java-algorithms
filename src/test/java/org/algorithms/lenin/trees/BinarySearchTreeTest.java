@@ -120,4 +120,74 @@ class BinarySearchTreeTest {
 
         assertNull(bst.find(100));
     }
+
+    @Test
+    void delete() {
+
+        BinarySearchTree bst = new BinarySearchTree();
+
+        // Edge case
+        assertNull(bst.getRoot());
+        bst.delete(new TreeNode(0));
+        assertNull(bst.getRoot());
+
+        bst.delete(null);
+        assertNull(bst.getRoot());
+
+        // Base case
+        TreeNode n = bst.add(0);
+        assertEquals(0, bst.getRoot().getVal());
+        bst.delete(n);
+        assertNull(bst.getRoot());
+
+        // two node tree
+        bst.add(3);
+        n = bst.add(2);
+        bst.delete(n);
+        assertNull(bst.find(2));
+        assertEquals(3, bst.getRoot().getVal());
+
+
+        // left most leaf of left subtree
+        TreeNode node2 = bst.add(2);
+        TreeNode node0 = bst.add(0);
+        TreeNode node1 = bst.add(1);
+        bst.delete(node0);
+        assertNull(bst.find(0));
+        bst.add(0);
+
+        // right most leaf of left subtree
+        bst.delete(node1);
+        assertNull(bst.find(1));
+        bst.add(1);
+
+        // left subtree root
+        bst.delete(node2);
+        assertNull(bst.find(2));
+        assertEquals(0, bst.getRoot().getLeft().getVal());
+
+
+        // right subtree
+        bst.add(10);
+        TreeNode node5 = bst.add(5);
+        TreeNode node4 = bst.add(4);
+        bst.add(8);
+        bst.add(6);
+        bst.add(9);
+        TreeNode node12 = bst.add(12);
+
+        // left most node of right subtree
+        bst.delete(node4);
+        assertNull(bst.find(4));
+        bst.add(4);
+
+        // right most node of right subtree
+        bst.delete(node12);
+        assertNull(bst.find(12));
+        bst.add(12);
+
+        // right subtree root
+        bst.delete(node5);
+        assertEquals(6, bst.getRoot().getRight().getLeft().getVal());
+    }
 }
