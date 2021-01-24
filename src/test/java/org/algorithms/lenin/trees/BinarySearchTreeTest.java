@@ -89,5 +89,7 @@ class BinarySearchTreeTest {
         assertEquals(n, bst.getRoot().getRight().getLeft());
         n = bst.add(6);
         assertEquals(n, bst.getRoot().getRight().getRight());
+
+        assertNotNull(BinarySearchTree.isBST(bst.getRoot()));
     }
 }
