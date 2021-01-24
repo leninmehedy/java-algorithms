@@ -29,7 +29,7 @@ public class BinarySearchTree {
      *   - Regular cases: not BST, valid BST, one leaf invalid
      */
     public static MinMax isBST(TreeNode root) {
-        if (null == root) {
+        if (root == null) {
             // return the min = Integer.MAX and max = Integer.MIN for null nodes
             return new MinMax(Integer.MAX_VALUE, Integer.MIN_VALUE);
         }
@@ -39,7 +39,7 @@ public class BinarySearchTree {
 
         // if either leftMinMax or rightMinMax subtree is not a BST,
         // the tree is not a BST
-        if (null == leftMinMax || null == rightMinMax) {
+        if (leftMinMax == null || rightMinMax == null) {
             return null;
         }
 
@@ -84,7 +84,7 @@ public class BinarySearchTree {
         TreeNode parent = null;
         TreeNode current = this.root;
 
-        while(null != current) {
+        while(current != null) {
             parent = current;
             if (val <= current.getVal()) {
                 current = current.getLeft();
@@ -95,7 +95,7 @@ public class BinarySearchTree {
 
         // if existing values is not found then add
         // note we do not support duplicates
-        if (null == current) {
+        if (current == null) {
             current = new TreeNode(val);
             if (null == parent) {
                 this.root = current;
@@ -152,19 +152,19 @@ public class BinarySearchTree {
      *   - Regular cases: left child with successor, right child with successor
      */
     public void delete(TreeNode node) {
-        if (null == node || null == this.root) {
+        if (node == null || this.root == null) {
             return; // nothing to delete
         }
 
-        if (null == node.getLeft() && null == node.getRight()) {
+        if (node.getLeft() == null && node.getRight() == null) {
             replaceChild(node.getParent(), node, null);
-        } else if(null == node.getLeft()) {
+        } else if(node.getLeft() == null) {
             replaceChild(node.getParent(), node, node.getRight());
-        } else if (null == node.getRight()) {
+        } else if (node.getRight() == null) {
             replaceChild(node.getParent(), node, node.getLeft());
         } else {
             TreeNode successor = node.getRight();
-            while (null != successor.getLeft()) {
+            while (successor.getLeft() != null) {
                 successor = successor.getLeft();
             }
             node.setVal(successor.getVal());
@@ -195,13 +195,13 @@ public class BinarySearchTree {
      *  - Time: O(h)
      */
     public TreeNode findFirst(int val) {
-        if (null == this.root) {
+        if (this.root == null) {
             return null;
         }
 
         TreeNode result = null;
         TreeNode current = this.root;
-        while (null != current) {
+        while (current != null) {
             if (val < current.getVal()) {
                 current = current.getLeft();
             } else if (val > current.getVal()) {
@@ -234,17 +234,17 @@ public class BinarySearchTree {
      *   - Regular cases: node with left subtree, node with right subtree, last node of the tree
      */
     public TreeNode successor(TreeNode n) {
-        if (null == n || null == this.root) {
+        if (n == null || this.root == null) {
             return null;
         }
 
         TreeNode successor = null;
-        if (null != n.getRight()) {
+        if (n.getRight() != null) {
             successor = n.getRight();
             while(null != successor.getLeft()) {
                 successor = successor.getLeft();
             }
-        } else if (null != n.getParent()){
+        } else if (n.getParent() != null){
             TreeNode current = this.root;
             while (null != current && !current.equals(n)) {
                 if(n.getVal() < current.getVal()) {
