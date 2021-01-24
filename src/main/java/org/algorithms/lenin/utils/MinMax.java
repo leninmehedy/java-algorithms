@@ -36,6 +36,6 @@ public class MinMax {
         }
 
         MinMax b = (MinMax) o;
-        return this.getMin() == b.getMin() && this.getMax() == b.getMax();
+        return this.getMin().equals(b.getMin()) && this.getMax().equals(b.getMax());
     }
 }

@@ -2,6 +2,9 @@ package org.algorithms.lenin.trees;
 
 import org.algorithms.lenin.utils.MinMax;
 
+/**
+ * This implementation of Binary Search Tree do not support duplicates
+ */
 public class BinarySearchTree {
     TreeNode root;
 
@@ -93,6 +96,8 @@ public class BinarySearchTree {
             }
         }
 
+        // if existing values is not found then add
+        // note we do not support duplicates
         if (null == current) {
             current = new TreeNode(val);
             if (null == parent) {
