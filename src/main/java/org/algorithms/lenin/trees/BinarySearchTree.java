@@ -313,10 +313,10 @@ public class BinarySearchTree {
             return null;
         }
 
-        return reconstructTree(items, 0, items.length);
+        return reconstruct(items, 0, items.length);
     }
 
-    private static TreeNode reconstructTree(int[] items, int start, int end) {
+    public static TreeNode reconstruct(int[] items, int start, int end) {
         if (start > end) {
             return null;
         }
@@ -329,8 +329,8 @@ public class BinarySearchTree {
 
         // construct the tree
         TreeNode root =  new TreeNode(items[k]);
-        TreeNode left = reconstructTree(items, start, k - 1);
-        TreeNode right = reconstructTree(items, k + 1, end);
+        TreeNode left = reconstruct(items, start, k - 1);
+        TreeNode right = reconstruct(items, k + 1, end);
 
         root.setLeft(left);
         root.setRight(right);
