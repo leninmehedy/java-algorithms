@@ -3,7 +3,7 @@ package org.algorithms.lenin.trees;
 import org.algorithms.lenin.utils.MinMax;
 
 /**
- * This implementation of Binary Search Tree do not support duplicates
+ * This implementation of Binary Search Tree support duplicates
  */
 public class BinarySearchTree {
     TreeNode root;
@@ -88,7 +88,7 @@ public class BinarySearchTree {
         TreeNode parent = null;
         TreeNode current = this.root;
 
-        while(null != current && val != current.getVal()) {
+        while(null != current) {
             parent = current;
             if (val < current.getVal()) {
                 current = current.getLeft();
