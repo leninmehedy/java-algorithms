@@ -207,4 +207,24 @@ class BinarySearchTreeTest {
         bst.delete(node5);
         assertEquals(6, bst.getRoot().getRight().getLeft().getVal());
     }
+
+    @Test
+    public void findFirst() {
+        BinarySearchTree bst = new BinarySearchTree();
+
+        // edge case
+        assertNull(bst.findFirst(0));
+
+        bst.add(4);
+        assertEquals(bst.getRoot(), bst.findFirst(4));
+
+        bst.add(2);
+        bst.add(1);
+        TreeNode node4 = bst.add(4);
+        bst.add(5);
+
+        assertEquals(node4, bst.findFirst(4));
+        assertNotEquals(bst.find(4), bst.findFirst(4));
+        assertEquals(bst.find(1), bst.findFirst(1));
+    }
 }

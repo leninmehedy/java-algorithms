@@ -86,7 +86,7 @@ public class BinarySearchTree {
 
         while(null != current) {
             parent = current;
-            if (val < current.getVal()) {
+            if (val <= current.getVal()) {
                 current = current.getLeft();
             } else {
                 current = current.getRight();
@@ -100,7 +100,7 @@ public class BinarySearchTree {
             if (null == parent) {
                 this.root = current;
             } else {
-                if (val < parent.getVal()) {
+                if (val <= parent.getVal()) {
                     parent.setLeft(current);
                 } else {
                     parent.setRight(current);
@@ -183,4 +183,36 @@ public class BinarySearchTree {
             throw new IllegalArgumentException("Invalid parent-child relationship");
         }
     }
+
+    /**
+     * Find first occurrence in in-order traversal
+     *
+     * Solution:
+     *  - record match and move on until traverse is finished in the appropriate subtre
+     *
+     * Complexity:
+     *  - Space: O(1)
+     *  - Time: O(h)
+     */
+    public TreeNode findFirst(int val) {
+        if (null == this.root) {
+            return null;
+        }
+
+        TreeNode result = null;
+        TreeNode current = this.root;
+        while (null != current) {
+            if (val < current.getVal()) {
+                current = current.getLeft();
+            } else if (val > current.getVal()) {
+                current = current.getRight();
+            } else {
+                result = current; // record
+                current = current.getLeft(); // move-on to left
+            }
+        }
+
+        return result;
+    }
+
 }
