@@ -300,31 +300,31 @@ class BinarySearchTreeTest {
     public void reconstruct() {
         // Edge cases
         assertNull(BinarySearchTree.reconstruct(null));
-        assertNull(BinarySearchTree.reconstruct(new int[0]));
+        assertNull(BinarySearchTree.reconstruct(new Integer[0]));
 
         // Base cases - one node
-        assertEquals(0, BinarySearchTree.reconstruct(new int[]{0}).getVal());
+        assertEquals(0, BinarySearchTree.reconstruct(new Integer[]{0}).getVal());
 
         // Base cases - two nodes (left subtree)
-        TreeNode root = BinarySearchTree.reconstruct(new int[]{2, 4});
+        TreeNode root = BinarySearchTree.reconstruct(new Integer[]{2, 4});
         assertEquals(2, root.getVal());
         assertEquals(4, root.getRight().getVal());
 
         // Base cases - three nodes
-        root = BinarySearchTree.reconstruct(new int[]{2, 4, 10});
+        root = BinarySearchTree.reconstruct(new Integer[]{2, 4, 10});
         assertEquals(4, root.getVal());
         assertEquals(2, root.getLeft().getVal());
         assertEquals(10, root.getRight().getVal());
 
         // Regular cases - even nodes
-        root = BinarySearchTree.reconstruct(new int[]{1, 2, 4, 10});
+        root = BinarySearchTree.reconstruct(new Integer[]{1, 2, 4, 10});
         assertEquals(2, root.getVal());
         assertEquals(1, root.getLeft().getVal());
         assertEquals(4, root.getRight().getVal());
         assertEquals(10, root.getRight().getRight().getVal());
 
         // invalid array index
-        root = BinarySearchTree.reconstruct(new int[]{0}, 0, 10);
+        root = BinarySearchTree.reconstruct(new Integer[]{0}, 0, 10);
         assertNull(root);
     }
 }

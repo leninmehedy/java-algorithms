@@ -1,6 +1,7 @@
 package org.algorithms.lenin.trees;
 
 import org.algorithms.lenin.utils.MinMax;
+import org.algorithms.lenin.utils.Utils;
 
 /**
  * This implementation of Binary Search Tree supports duplicates
@@ -308,7 +309,7 @@ public class BinarySearchTree {
      *   - Base case: single element, two element, three element arrays
      *   - Regular case: even items array, odd items array
      */
-    public static TreeNode reconstruct(int[] items) {
+    public static TreeNode reconstruct(Integer[] items) {
         if (items == null || items.length == 0) {
             return null;
         }
@@ -316,16 +317,8 @@ public class BinarySearchTree {
         return reconstruct(items, 0, items.length - 1);
     }
 
-    public static boolean oob(int[] items, int i) {
-        if (i < 0 || i >= items.length) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public static TreeNode reconstruct(int[] items, int start, int end) {
-        if (start > end || oob(items, start) || oob(items, end)) {
+    public static TreeNode reconstruct(Integer[] items, int start, int end) {
+        if (start > end || Utils.oob(items, start) || Utils.oob(items, end)) {
             return null;
         }
 
