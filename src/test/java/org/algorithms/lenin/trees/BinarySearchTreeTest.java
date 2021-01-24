@@ -92,4 +92,30 @@ class BinarySearchTreeTest {
 
         assertNotNull(BinarySearchTree.isBST(bst.getRoot()));
     }
+
+    @Test
+    public void find() {
+        BinarySearchTree bst = new BinarySearchTree();
+
+        // Edge case
+        assertNull(bst.find(0));
+
+        // Base case
+        TreeNode n = bst.add(3);
+        assertEquals(n, bst.find(3));
+
+        // left subtree
+        bst.add(1);
+        bst.add(0);
+        n = bst.add(2);
+        assertEquals(n, bst.find(2));
+
+        // right subtree
+        bst.add(5);
+        n = bst.add(4);
+        assertEquals(n, bst.find(4));
+
+        n = bst.add(6);
+        assertEquals(n, bst.find(6));
+    }
 }

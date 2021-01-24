@@ -108,4 +108,32 @@ public class BinarySearchTree {
 
         return current;
     }
+
+    /**
+     * Find a node in the Binary Search Tree
+     *
+     * Complexity:
+     *  - Time: O(h)
+     *  - Space: O(h) in recursion stack
+     *
+     * Test cases
+     *   - Edge case: null tree
+     *   - Base case: one node and value exists, one node tree but value does not exists
+     *   - Regular case: tree with value, tree without the target value
+     *
+     * Return the node if it exists, otherwise return null
+     */
+    public TreeNode find(int val) {
+        TreeNode current = this.root;
+
+        while(null != current && val != current.getVal()) {
+            if (val < current.getVal()) {
+                current = current.getLeft();
+            } else {
+                current = current.getRight();
+            }
+        }
+
+        return current;
+    }
 }
