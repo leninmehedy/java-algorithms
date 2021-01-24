@@ -307,8 +307,8 @@ class BinarySearchTreeTest {
 
         // Base cases - two nodes (left subtree)
         TreeNode root = BinarySearchTree.reconstruct(new int[]{2, 4});
-        assertEquals(4, root.getVal());
-        assertEquals(2, root.getLeft().getVal());
+        assertEquals(2, root.getVal());
+        assertEquals(4, root.getRight().getVal());
 
         // Base cases - three nodes
         root = BinarySearchTree.reconstruct(new int[]{2, 4, 10});
@@ -318,9 +318,13 @@ class BinarySearchTreeTest {
 
         // Regular cases - even nodes
         root = BinarySearchTree.reconstruct(new int[]{1, 2, 4, 10});
-        assertEquals(4, root.getVal());
+        assertEquals(2, root.getVal());
         assertEquals(1, root.getLeft().getVal());
-        assertEquals(2, root.getLeft().getRight().getVal());
-        assertEquals(10, root.getRight().getVal());
+        assertEquals(4, root.getRight().getVal());
+        assertEquals(10, root.getRight().getRight().getVal());
+
+        // invalid array index
+        root = BinarySearchTree.reconstruct(new int[]{0}, 0, 10);
+        assertNull(root);
     }
 }

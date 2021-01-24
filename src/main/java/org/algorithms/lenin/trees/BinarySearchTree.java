@@ -313,19 +313,24 @@ public class BinarySearchTree {
             return null;
         }
 
-        return reconstruct(items, 0, items.length);
+        return reconstruct(items, 0, items.length - 1);
+    }
+
+    public static boolean oob(int[] items, int i) {
+        if (i < 0 || i >= items.length) {
+            return true;
+        }
+
+        return false;
     }
 
     public static TreeNode reconstruct(int[] items, int start, int end) {
-        if (start > end) {
+        if (start > end || oob(items, start) || oob(items, end)) {
             return null;
         }
 
         // find median
         int k = start + (end - start) / 2;
-        if (k >= items.length || k < 0) {
-            return null;
-        }
 
         // construct the tree
         TreeNode root =  new TreeNode(items[k]);
