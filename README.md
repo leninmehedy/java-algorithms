@@ -24,7 +24,7 @@ Here is the list of algorithm problems and implementations:
 - Auxiliary Buffers
 - Backtracking
 ## Linked List
-- ]Append function](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/list/LinkedList.java#L20)
+- [Append function](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/list/LinkedList.java#L20)
 - [Find the median of a sorted linked list](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/list/LinkedList.java#L55)
 - Delete nodes
 - Linked Hash Table
