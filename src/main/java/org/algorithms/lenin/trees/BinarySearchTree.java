@@ -140,9 +140,9 @@ public class BinarySearchTree {
     /**
      * Delete a node from the binary search tree
      *
-     * Solution:
-     *
      * Complexity:
+     *  - Space: O(h) for recursion stack
+     *  - Time: O(h)
      *
      * Test cases:
      *   - Edge cases: null node

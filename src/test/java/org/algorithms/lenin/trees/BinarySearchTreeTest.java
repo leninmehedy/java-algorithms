@@ -126,11 +126,12 @@ class BinarySearchTreeTest {
 
         BinarySearchTree bst = new BinarySearchTree();
 
-        // Edge case
+        // null tree
         assertNull(bst.getRoot());
         bst.delete(new TreeNode(0));
         assertNull(bst.getRoot());
 
+        // null node
         bst.delete(null);
         assertNull(bst.getRoot());
 
@@ -140,7 +141,7 @@ class BinarySearchTreeTest {
         bst.delete(n);
         assertNull(bst.getRoot());
 
-        // two node tree
+        // two nodes tree
         bst.add(3);
         n = bst.add(2);
         bst.delete(n);
@@ -161,7 +162,7 @@ class BinarySearchTreeTest {
         assertNull(bst.find(1));
         bst.add(1);
 
-        // left subtree root
+        // left subtree root with successor
         bst.delete(node2);
         assertNull(bst.find(2));
         assertEquals(0, bst.getRoot().getLeft().getVal());
@@ -186,7 +187,7 @@ class BinarySearchTreeTest {
         assertNull(bst.find(12));
         bst.add(12);
 
-        // right subtree root
+        // right subtree root with successor
         bst.delete(node5);
         assertEquals(6, bst.getRoot().getRight().getLeft().getVal());
     }
