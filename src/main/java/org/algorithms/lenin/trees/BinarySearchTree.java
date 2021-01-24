@@ -301,7 +301,7 @@ public class BinarySearchTree {
      *
      *  Complexity:
      *   - Space: O(n)
-     *   - Time: O(logn)
+     *   - Time: O(n)
      *
      *  Test cases:
      *   - Edge cases: empty array
