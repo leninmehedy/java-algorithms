@@ -87,10 +87,11 @@ Here is the list of algorithm problems and implementations:
 - [Implement add operation in a BST](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BinarySearchTree.java#L83)
 - [Implement operations to find a node in a BST](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BinarySearchTree.java#L131)
 - [Implement the Delete operation in a BST](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BinarySearchTree.java#L157)
-- Record and Move On: Given a Binary Search Tree that can contain duplicates, find the first occurrence of the number X.
-- Successor
-- LCA in a binary search tree
-- Building Balanced BSt
+- [First occurrence of the number X in in-order traversal of BST](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BinarySearchTree.java#L197).
+- [Successor of a node in BST](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BinarySearchTree.java#L236)
+- [LCA in a binary search tree](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BinarySearchTree.java#L276)
+- [Building Balanced BST from a sorted array]()
+- [Building Balanced BST from a sorted linked list]()
 - Trie
 ## Majority Search
 - Search n/2 majority
