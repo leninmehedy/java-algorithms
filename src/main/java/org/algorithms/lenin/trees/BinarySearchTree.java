@@ -3,7 +3,7 @@ package org.algorithms.lenin.trees;
 import org.algorithms.lenin.utils.MinMax;
 
 /**
- * This implementation of Binary Search Tree support duplicates
+ * This implementation of Binary Search Tree supports duplicates
  */
 public class BinarySearchTree {
     TreeNode root;
@@ -257,6 +257,39 @@ public class BinarySearchTree {
         }
 
         return successor;
+    }
+
+    /**
+     * Find lowest common ancestor in BST
+     *
+     * Assumption: Both nodes exist in the tree
+     *
+     * Complexity:
+     *  - Space: O(1)
+     *  - Time: O(h)
+     *
+     * Test cases:
+     *  - Edge cases: null values, empty tree
+     *  - Base cases: tree nodes tree
+     *  - Regular cases: nodes in same subtree, nodes in different subtree
+     */
+    public TreeNode lca(TreeNode a, TreeNode b) {
+        if (a == null || b == null || this.root == null) {
+            return null;
+        }
+
+        TreeNode current = this.root;
+        while(current != null) {
+            if (a.getVal() < current.getVal() && b.getVal() < current.getVal()) {
+                current = current.getLeft();
+            } else if (a.getVal() > current.getVal() && b.getVal() > current.getVal()) {
+                current = current.getRight();
+            } else {
+                break; // current is between a and b, so this is the LCA
+            }
+        }
+
+        return current;
     }
 
 }

@@ -264,4 +264,37 @@ class BinarySearchTreeTest {
         assertEquals(node5, bst.successor(node4));
         assertNull(bst.successor(node11));
     }
+
+    @Test
+    public void lca() {
+        BinarySearchTree bst = new BinarySearchTree();
+
+        // Edge case: null values and null tree
+        assertNull(bst.lca(new TreeNode(1), new TreeNode(11)));
+
+        TreeNode node4 = bst.add(4);
+        assertNull(bst.lca(null, new TreeNode(11)));
+        assertNull(bst.lca(new TreeNode(1), null));
+
+        // Base case
+        TreeNode node2 = bst.add(2);
+        TreeNode node10 = bst.add(10);
+        assertEquals(bst.getRoot(), bst.lca(node2, node10));
+
+        TreeNode node1 = bst.add(1);
+        TreeNode node3 = bst.add(3);
+        TreeNode node5 =  bst.add(5);
+        TreeNode node11 =  bst.add(11);
+
+        // left subtree
+        assertEquals(node2, bst.lca(node1, node3));
+
+        // right subtree
+        assertEquals(node10, bst.lca(node5, node11));
+
+        // cross subtrees
+        assertEquals(node4, bst.lca(node1, node11));
+
+
+    }
 }
