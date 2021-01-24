@@ -2,14 +2,14 @@ package org.algorithms.lenin.trees;
 
 import org.algorithms.lenin.graphs.State;
 
-public class BTreeNode {
+public class TreeNode {
     private int val;
-    private BTreeNode left;
-    private BTreeNode right;
-    private BTreeNode parent;
+    private TreeNode left;
+    private TreeNode right;
+    private TreeNode parent;
     private State state;
 
-    public BTreeNode(int val) {
+    public TreeNode(int val) {
         this.val = val;
         this.state = State.UNVISITED;
         this.left = null;
@@ -36,7 +36,7 @@ public class BTreeNode {
         return String.format("%d", this.val);
     }
 
-    public void setLeft(BTreeNode n) {
+    public void setLeft(TreeNode n) {
         if (null == n) {
             return;
         }
@@ -45,15 +45,15 @@ public class BTreeNode {
         this.left = n;
     }
 
-    public BTreeNode getLeft() {
+    public TreeNode getLeft() {
         return this.left;
     }
 
-    public BTreeNode getParent() {
+    public TreeNode getParent() {
         return this.parent;
     }
 
-    public void setRight(BTreeNode n) {
+    public void setRight(TreeNode n) {
         if (null == n) {
             return;
         }
@@ -62,7 +62,7 @@ public class BTreeNode {
         this.right = n;
     }
 
-    public BTreeNode getRight() {
+    public TreeNode getRight() {
         return this.right;
     }
 }

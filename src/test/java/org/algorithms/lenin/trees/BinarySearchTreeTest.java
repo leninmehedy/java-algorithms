@@ -8,13 +8,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BSTTest {
+class BinarySearchTreeTest {
 
-    BTreeNode setupBST(List<BTreeNode> nodes) {
+    TreeNode setupBST(List<TreeNode> nodes) {
         for (int i = 0; i <= 6; i++) {
-            nodes.add(new BTreeNode(i));
+            nodes.add(new TreeNode(i));
         }
-        BTreeNode root = nodes.get(3);
+        TreeNode root = nodes.get(3);
         root.setLeft(nodes.get(1));
         root.setRight(nodes.get(5));
         root.getLeft().setLeft(nodes.get(0));
@@ -25,11 +25,11 @@ class BSTTest {
         return root;
     }
 
-    BTreeNode setupNotBST(List<BTreeNode> nodes) {
+    TreeNode setupNotBST(List<TreeNode> nodes) {
         for (int i = 0; i <= 6; i++) {
-            nodes.add(new BTreeNode(i));
+            nodes.add(new TreeNode(i));
         }
-        BTreeNode root = nodes.get(3);
+        TreeNode root = nodes.get(3);
         root.setLeft(nodes.get(1));
         root.setRight(nodes.get(4));
         root.getLeft().setLeft(nodes.get(0));
@@ -43,19 +43,19 @@ class BSTTest {
     @Test
     void isBST() {
         // edge cases
-        assertNull(BST.isBST(null));
+        assertNull(BinarySearchTree.isBST(null));
 
         // base cases
-        assertEquals(new MinMax(0, 0), BST.isBST(new BTreeNode(0)));
+        assertEquals(new MinMax(0, 0), BinarySearchTree.isBST(new TreeNode(0)));
 
         // valid BST
-        List<BTreeNode> nodes = new ArrayList<>();
-        BTreeNode root = setupBST(nodes);
-        assertEquals(new MinMax(0, 6), BST.isBST(root));
+        List<TreeNode> nodes = new ArrayList<>();
+        TreeNode root = setupBST(nodes);
+        assertEquals(new MinMax(0, 6), BinarySearchTree.isBST(root));
 
         // invalid BST
         nodes.clear();
         root = setupNotBST(nodes);
-        assertNull(BST.isBST(root));
+        assertNull(BinarySearchTree.isBST(root));
     }
 }

@@ -4,11 +4,11 @@ import org.algorithms.lenin.graphs.State;
 
 import java.util.*;
 
-public class BTrees {
+public class BinaryTree {
     public static final String TREE_HEIGHT = "height";
     public static final String TREE_LONGEST_PATH = "longestPath";
 
-    public static void inOrder(BTreeNode root, List<Integer> ret) {
+    public static void inOrder(TreeNode root, List<Integer> ret) {
         if (null == ret) {
             throw new IllegalArgumentException("Return list cannot be null");
         }
@@ -23,7 +23,7 @@ public class BTrees {
         inOrder(root.getRight(), ret);
     }
 
-    public static void preOrder(BTreeNode root, List<Integer> ret) {
+    public static void preOrder(TreeNode root, List<Integer> ret) {
         if (null == ret) {
             throw new IllegalArgumentException("Return list cannot be null");
         }
@@ -37,7 +37,7 @@ public class BTrees {
         preOrder(root.getRight(), ret);
     }
 
-    public static void postOrder(BTreeNode root, List<Integer> ret) {
+    public static void postOrder(TreeNode root, List<Integer> ret) {
         if (null == ret) {
             throw new IllegalArgumentException("Return list cannot be null");
         }
@@ -57,7 +57,7 @@ public class BTrees {
      * @param root BTreeNode
      * @param ret  List<Integer> containing the traversal result
      */
-    public static void inOrderIterative(BTreeNode root, List<Integer> ret) {
+    public static void inOrderIterative(TreeNode root, List<Integer> ret) {
         if (null == ret) {
             throw new IllegalArgumentException("Return list cannot be null");
         }
@@ -66,11 +66,11 @@ public class BTrees {
             return;
         }
 
-        Stack<BTreeNode> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
 
         while (!stack.isEmpty()) {
-            BTreeNode node = stack.pop();
+            TreeNode node = stack.pop();
             if (node.getState() == State.VISITING) {
                 ret.add(node.getVal());
             } else {
@@ -99,7 +99,7 @@ public class BTrees {
      * @param root
      * @return
      */
-    public static void heightTop2Bottom(BTreeNode root, Integer curDepth, Map<String, Integer> ret) {
+    public static void heightTop2Bottom(TreeNode root, Integer curDepth, Map<String, Integer> ret) {
         if (null == ret) {
             throw new IllegalArgumentException("Return map object cannot be null");
         }
@@ -136,7 +136,7 @@ public class BTrees {
      * @param root
      * @return
      */
-    public static int heightBottom2Top(BTreeNode root) {
+    public static int heightBottom2Top(TreeNode root) {
         if (null == root) {
             return -1;
         }
@@ -156,12 +156,12 @@ public class BTrees {
      * @param root
      * @return -1 if it is not balanced otherwise it returns a positive integer(i.e. height + 1)
      */
-    public static boolean isBalanced(BTreeNode root) {
+    public static boolean isBalanced(TreeNode root) {
         int val = isBalancedChecker(root);
         return val != -1;
     }
 
-    private static int isBalancedChecker(BTreeNode root) {
+    private static int isBalancedChecker(TreeNode root) {
         if (null == root) {
             return 0;
         }
@@ -193,7 +193,7 @@ public class BTrees {
      * @param root
      * @return
      */
-    public static int diameter(BTreeNode root) {
+    public static int diameter(TreeNode root) {
         Map<String, Integer> ret = diameterHelper(root);
         if (ret.get(TREE_LONGEST_PATH) > 0) {
             return ret.get(TREE_LONGEST_PATH) - 1;
@@ -201,7 +201,7 @@ public class BTrees {
         return 0;
     }
 
-    private static Map<String, Integer> diameterHelper(BTreeNode root) {
+    private static Map<String, Integer> diameterHelper(TreeNode root) {
         Map<String, Integer> ret = new HashMap<>();
         ret.put(TREE_HEIGHT, 0);
         ret.put(TREE_LONGEST_PATH, 0);
@@ -231,7 +231,7 @@ public class BTrees {
      * @param y    target node Y
      * @return lowest common ancestor of x and y or null if it does not exists
      */
-    public static BTreeNode lca(BTreeNode root, BTreeNode x, BTreeNode y) {
+    public static TreeNode lca(TreeNode root, TreeNode x, TreeNode y) {
         if (null == root) {
             return null;
         }
@@ -240,8 +240,8 @@ public class BTrees {
             throw new IllegalArgumentException("Target tree nodes x and y cannot be null");
         }
 
-        int xHeight = BTrees.heightBottom2Top(x);
-        int yHeight = BTrees.heightBottom2Top(y);
+        int xHeight = BinaryTree.heightBottom2Top(x);
+        int yHeight = BinaryTree.heightBottom2Top(y);
 
         while (xHeight < yHeight && null != x) {
             x = x.getParent();
@@ -273,7 +273,7 @@ public class BTrees {
      * would differ than what it is in below.
      *
      */
-    public static BTreeNode lca2(BTreeNode node, BTreeNode x, BTreeNode y) {
+    public static TreeNode lca2(TreeNode node, TreeNode x, TreeNode y) {
         if (null == node || node == x || node == y) {
             return node;
         }
@@ -282,8 +282,8 @@ public class BTrees {
             throw new IllegalArgumentException("Target nodes cannot be null");
         }
 
-        BTreeNode leftLCA = lca2(node.getLeft(), x, y);
-        BTreeNode rightLCA = lca2(node.getRight(), x, y);
+        TreeNode leftLCA = lca2(node.getLeft(), x, y);
+        TreeNode rightLCA = lca2(node.getRight(), x, y);
 
         if (null == leftLCA && null == rightLCA) {
             return null;
@@ -303,7 +303,7 @@ public class BTrees {
      * @param curPath
      * @param paths
      */
-    public static void allPaths(BTreeNode root, List<Integer> curPath, List<List<Integer>> paths) {
+    public static void allPaths(TreeNode root, List<Integer> curPath, List<List<Integer>> paths) {
         if (null == root) {
             return;
         }
@@ -339,7 +339,7 @@ public class BTrees {
     /**
      * Reconstruct a binary tree from in-order and pre-order traversals
      */
-    public static BTreeNode buildTree(List<Integer> inOrder, List<Integer> preOrder) {
+    public static TreeNode buildTree(List<Integer> inOrder, List<Integer> preOrder) {
         Map<Integer, Integer> inOrderMap = new HashMap<>();
         for (int i = 0; i < inOrder.size(); i++) {
             inOrderMap.put(inOrder.get(i), i);
@@ -350,9 +350,9 @@ public class BTrees {
                 preOrder, 0, preOrder.size() - 1);
     }
 
-    private static BTreeNode reconstructHelper(Map<Integer, Integer> inOrderMap,
-                                               List<Integer> inOrder, int inStart, int inEnd,
-                                               List<Integer> preOrder, int preStart, int preEnd) {
+    private static TreeNode reconstructHelper(Map<Integer, Integer> inOrderMap,
+                                              List<Integer> inOrder, int inStart, int inEnd,
+                                              List<Integer> preOrder, int preStart, int preEnd) {
 
         if ((inEnd - inStart) != (preEnd - preStart)) {
             throw new IllegalArgumentException("In-order and Pre-order traversal array must be of same length");
@@ -363,15 +363,15 @@ public class BTrees {
         }
 
         int val = preOrder.get(preStart);
-        BTreeNode root = new BTreeNode(val);
+        TreeNode root = new TreeNode(val);
 
         int k = inOrderMap.get(val);
         int len = k - inStart;
-        BTreeNode left = reconstructHelper(inOrderMap,
+        TreeNode left = reconstructHelper(inOrderMap,
                 inOrder, inStart, k - 1,
                 preOrder, preStart + 1, preStart + len
         );
-        BTreeNode right = reconstructHelper(inOrderMap,
+        TreeNode right = reconstructHelper(inOrderMap,
                 inOrder, k + 1, inEnd,
                 preOrder, preStart + len + 1, preEnd
         );
@@ -385,7 +385,7 @@ public class BTrees {
     /**
      * Reconstruct a binary tree from in-order and post-order traversals
      */
-    public static BTreeNode buildTree2(List<Integer> inOrder, List<Integer> postOrder) {
+    public static TreeNode buildTree2(List<Integer> inOrder, List<Integer> postOrder) {
         Map<Integer, Integer> inOrderMap = new HashMap<>();
         for (int i = 0; i < inOrder.size(); i++) {
             inOrderMap.put(inOrder.get(i), i);
@@ -396,9 +396,9 @@ public class BTrees {
                 postOrder, 0, postOrder.size() - 1);
     }
 
-    private static BTreeNode reconstructHelper2(Map<Integer, Integer> inOrderMap,
-                                                List<Integer> inOrder, int inStart, int inEnd,
-                                                List<Integer> postOrder, int postStart, int postEnd) {
+    private static TreeNode reconstructHelper2(Map<Integer, Integer> inOrderMap,
+                                               List<Integer> inOrder, int inStart, int inEnd,
+                                               List<Integer> postOrder, int postStart, int postEnd) {
 
         if ((inEnd - inStart) != (postEnd - postStart)) {
             throw new IllegalArgumentException("In-order and Post-order traversal array must be of same length");
@@ -409,15 +409,15 @@ public class BTrees {
         }
 
         int val = postOrder.get(postEnd);
-        BTreeNode root = new BTreeNode(val);
+        TreeNode root = new TreeNode(val);
 
         int k = inOrderMap.get(val);
         int len = k - inStart;
-        BTreeNode left = reconstructHelper2(inOrderMap,
+        TreeNode left = reconstructHelper2(inOrderMap,
                 inOrder, inStart, k - 1,
                 postOrder, postStart, postStart + len - 1
         );
-        BTreeNode right = reconstructHelper2(inOrderMap,
+        TreeNode right = reconstructHelper2(inOrderMap,
                 inOrder, k + 1, inEnd,
                 postOrder, postStart + len, postEnd - 1
         );

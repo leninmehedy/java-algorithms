@@ -1,6 +1,6 @@
 package org.algorithms.lenin.graphs;
 
-import org.algorithms.lenin.trees.BTreeNode;
+import org.algorithms.lenin.trees.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -172,9 +172,9 @@ public class GraphsTest {
 
     @Test
     void inOrder() {
-        List<BTreeNode> nodes = new ArrayList<>();
+        List<TreeNode> nodes = new ArrayList<>();
         for(int i = 0; i <= 6; i++) {
-            nodes.add(new BTreeNode(i));
+            nodes.add(new TreeNode(i));
         }
         nodes.get(3).setLeft(nodes.get(2));
         nodes.get(3).setRight(nodes.get(4));

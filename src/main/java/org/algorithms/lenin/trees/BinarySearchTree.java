@@ -2,7 +2,7 @@ package org.algorithms.lenin.trees;
 
 import org.algorithms.lenin.utils.MinMax;
 
-public class BST {
+public class BinarySearchTree {
     /**
      * Check if a binary tree is a Binary Search Tree (BST) or not
      *
@@ -23,7 +23,7 @@ public class BST {
      *   - Base cases: Single node, Two nodes
      *   - Regular cases: not BST, valid BST, one leaf invalid
      */
-    public static MinMax isBST(BTreeNode root) {
+    public static MinMax isBST(TreeNode root) {
         if (null == root) {
             return null;
         }
