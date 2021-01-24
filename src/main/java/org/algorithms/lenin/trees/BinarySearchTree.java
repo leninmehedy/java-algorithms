@@ -34,10 +34,6 @@ public class BinarySearchTree {
             return new MinMax(Integer.MAX_VALUE, Integer.MIN_VALUE);
         }
 
-        if (null == root.getLeft() && null == root.getRight()) {
-            return new MinMax(root.getVal(), root.getVal());
-        }
-
         MinMax leftMinMax = isBST(root.getLeft());
         MinMax rightMinMax = isBST(root.getRight());
 
