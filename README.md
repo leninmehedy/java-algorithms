@@ -83,7 +83,11 @@ Here is the list of algorithm problems and implementations:
 - [Build binary tree from in-order and pre-order traversals](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L342)
 - [Build binary tree from in-order and post-order traversals](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BTrees.java#L388)
 ## Binary Search Tree
-- Record and Move On
+- [Given a Binary Tree, determine if it is a Binary Search Tree (BST)](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BinarySearchTree.java#L31)
+- [Implement add operation in a BST](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BinarySearchTree.java#L83)
+- [Implement operations to find a node in a BST](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BinarySearchTree.java#L131)
+- [Implement the Delete operation in a BST](https://github.com/leninmehedy/java-algorithms/blob/main/src/main/java/org/algorithms/lenin/trees/BinarySearchTree.java#L157)
+- Record and Move On: Given a Binary Search Tree that can contain duplicates, find the first occurrence of the number X.
 - Successor
 - LCA in a binary search tree
 - Building Balanced BSt
