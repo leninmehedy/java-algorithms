@@ -1,6 +1,17 @@
 # Algorithms in Java
 This repository contains various algorithm and data structure implementations in Java 8 that I have been practising recently.
 
+# Steps
+For any given problem follow the steps bellow as you would do in professional settings:
+ - Examples: Ask for examples
+ - Clarify: Ask questions to clearify input-output and constraints
+ - First Solution: Find a brute-force solution and estimate time/space complexity
+ - Iterate: Iterate to find new solutions and their time/space complexity
+ - Approval: Ask if the solution is OK to proceed with
+ - Test cases: Think about test cases: Edge cases, Base cases and Regular cases
+ - Code: Write the solution. Feel free to add comments in the code. Make it as neat and clean as possible.
+ - Verify: verify your code using the tests cases.
+
 Here is the list of algorithm problems and implementations:
 
 ## Arrays and Strings I

@@ -1,7 +1,11 @@
 package org.algorithms.lenin.strings;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * SentenceUtil exposes various utility functions to process a sentence
@@ -79,6 +83,7 @@ public class Strings {
         return k;
     }
 
+
     /**
      * ReverseWords reverse the words in a sentence
      *
@@ -136,6 +141,13 @@ public class Strings {
     private void copyWord2(StringBuilder builder, String src, int start, int end) {
         if (builder.length() > 0) builder.append(' ');
         builder.append(src.substring(start, end));
+    }
+
+    public String reverseWords3(String s) {
+        if (s == null || s.length() == 0) return s;
+        List<String> words = Arrays.asList(s.split(" "));
+        Collections.reverse(words);
+        return words.stream().collect(Collectors.joining(" "));
     }
 
     /**

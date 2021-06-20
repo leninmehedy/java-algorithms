@@ -39,6 +39,19 @@ public class StringsTest {
     }
 
     @Test
+    public void testReverseWords3() {
+        Strings su = new Strings();
+
+        assertEquals(null, su.reverseWords3(null));
+        assertEquals("", su.reverseWords3(""));
+        assertEquals("i", su.reverseWords3("i"));
+        assertEquals("live", su.reverseWords3("live"));
+        assertEquals("live i", su.reverseWords3("i live"));
+
+        assertEquals("house a in live i", su.reverseWords3("i live in a house"));
+    }
+
+    @Test
     public void testLongestUniqueSubstring() {
         Strings su = new Strings();
         assertArrayEquals(null, su.longestUniqueSubstring(null));

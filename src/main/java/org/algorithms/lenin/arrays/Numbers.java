@@ -8,16 +8,18 @@ public class Numbers {
      *
      * Constraints:
      *  - Only integer?
+     *      - Yes
      *  - Can we allocate new array?
      *      - No, the input will have extra spaces
      *  - Value of extra spaces
      *      - -1
      *  - Would input contain any other negatives?
+     *      - No
      *
      *  Solution:
      *      - Two indexes
      *      - Traverse from the reverse and find the first non-negative
-     *      - Copy even number twice or copy once
+     *      - Copy twice if it is an even number twice otherwise copy once
      *
      *  Complexity:
      *      - Computation: O(n)
@@ -30,11 +32,11 @@ public class Numbers {
      *          - single element
      *          - all empty (-1)
      *      Base:
-     *          - one even
-     *          - one odd
-     *          - one even and one odd
+     *          - array with only one even number
+     *          - array with only one odd number
+     *          - array with one even and one odd number
      *      Regular:
-     *          - Multiple numbers with mixed
+     *          - Multiple numbers with mixed types (i.e. even or odd)
      */
     public int[] cloneEven(int[] s) {
         if (s == null || s.length <= 1) return s;
