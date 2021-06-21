@@ -77,6 +77,18 @@ public class NumbersTest {
         assertArrayEquals(new int[]{2, 6}, nu.maxSumSubArray(new int[]{-2, -3, 4, -1, -2, 1, 5, -1}));
     }
 
+    @Test
+    public void testSquareArry() {
+        Numbers nu = new Numbers();
+        assertEquals(null, nu.squareArray(null));
+        assertArrayEquals(new int[]{}, nu.squareArray(new int[]{}));
+        assertArrayEquals(new int[]{1}, nu.squareArray(new int[]{-1}));
+        assertArrayEquals(new int[]{1, 4}, nu.squareArray(new int[]{1, 2}));
+        assertArrayEquals(new int[]{4, 4}, nu.squareArray(new int[]{-2, -2}));
+        assertArrayEquals(new int[]{4, 4, 9}, nu.squareArray(new int[]{-3, -2, 2}));
+        assertArrayEquals(new int[]{0, 1, 4, 9, 16, 25}, nu.squareArray(new int[]{-4, -2, -1, 0, 3, 5}));
+    }
+
     public void testSubArraySum() {
         Numbers nu = new Numbers();
         try {

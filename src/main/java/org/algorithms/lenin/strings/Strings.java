@@ -145,9 +145,9 @@ public class Strings {
 
     public String reverseWords3(String s) {
         if (s == null || s.length() == 0) return s;
-        List<String> words = Arrays.asList(s.split(" "));
-        Collections.reverse(words);
-        return words.stream().collect(Collectors.joining(" "));
+        List<String> words = Arrays.asList(s.split(" ")); // O(N)
+        Collections.reverse(words); // O(N)
+        return words.stream().collect(Collectors.joining(" ")); // O(N)
     }
 
     /**

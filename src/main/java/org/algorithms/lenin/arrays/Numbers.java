@@ -351,6 +351,53 @@ public class Numbers {
     }
 
     /**
+     * Square the number in a sorted array and return in sorted format
+     *
+     * Examples: [-4, -2, -1, 0, 3, 5] -> [0, 1, 4, 9, 16, 25]
+     *
+     * Constraints:
+     *   1. Signed integer
+     *   2. For null or empty array, return the array itself
+     *   3. You may or may not allocate new array
+     *   4. Duplicates may exists
+     *
+     * Solution - 1:
+     *   - Track the smallest at 0
+     *   - Search from the last and swap with the smallest at 0
+     *   - If the new position is larger than the last, swap
+     * Complexity:
+     *   - Computation: O(N)
+     *   - Storage: O(1)
+     *
+     * Test cases:
+     *   - Edge cases: null, empty array
+     *   - Base case: one positive, one negative, two positive, two negative, two duplicates, two with one positive and one negative
+     *   - Regular cases: 
+     *       three with mixed
+     *       three with duplicates
+     *       5 with mixed (given example)
+     */
+    public int[] squareArray(int[] a) {
+        if (a == null || a.length == 0) {
+            return a;
+        }
+
+        a[0] = a[0] * a[0];
+        int j = a.length - 1;
+        while(j > 0) {
+            a[j] = a[j] * a[j];
+            if (a[0] > a[j]) {
+                swap(a, 0, j);
+            } else if (j <= a.length - 2 && a[j] > a[j+1]) {
+                swap(a, j, j+1);
+            }
+            j--;
+        }
+
+        return a;
+    }
+
+    /**
      *
      * Examples:
      *
