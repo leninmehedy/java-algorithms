@@ -1,10 +1,10 @@
 # Algorithms in Java
 This repository contains various algorithm and data structure implementations in Java 8 that I have been practising recently.
 
-# Steps
+# Interview Steps
 For any given problem follow the steps bellow as you would do in professional settings:
  - Examples: Ask for examples
- - Clarify: Ask questions to clearify input-output and constraints
+ - Clarify: Ask questions to clarify input-output and constraints
  - First Solution: Find a brute-force solution and estimate time/space complexity
  - Iterate: Iterate to find improvements and their time/space complexity
  - Approval: Ask if the solution is OK to proceed with
