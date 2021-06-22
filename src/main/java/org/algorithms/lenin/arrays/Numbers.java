@@ -1,5 +1,7 @@
 package org.algorithms.lenin.arrays;
 
+import java.util.HashMap;
+
 public class Numbers {
     /**
      * Clone even number twice
@@ -395,6 +397,52 @@ public class Numbers {
         }
 
         return a;
+    }
+    /**
+     * Given an array of integers, both -ve and +ve, find a contiguous subarray that sums to 0.
+     * Examples: [2,4,-2,1,-3,5,-3] --> [4,-2,1,-3]
+     *
+     * Questions:
+     *  - What to return? 
+     *      - Return start and end indices
+     *      - Return null if there is no subarray
+     *      - Return null if the input is null or empty
+     *
+     * Solution:
+     *   - Compute sum for each index
+     *   - If the sum is zero then return start and current pos
+     *   - If the sum has been seen before, return the (last index + 1, current index)
+     *   - Otherwise put the sum and index in the hasmap and go to the next index
+     * Complexity:
+     *   - Computation: O(N)
+     *   - Storage: O(N)
+     *
+     * Test cases:
+     */
+    public int[] prefixSum(int[] a) {
+        if (a == null || a.length == 0) {
+            return null;
+        }
+
+        int sum = a[0];
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(sum, 0);
+
+        for (int i = 1; i < a.length; i++) {
+            sum += a[i];
+
+            if (sum == 0) {
+                return new int[]{0, i};
+            }
+
+            if (map.containsKey(sum)) {
+                return new int[]{map.get(sum) + 1, i};
+            }
+
+            map.put(sum, i);
+        }
+
+        return null;
     }
 
     /**

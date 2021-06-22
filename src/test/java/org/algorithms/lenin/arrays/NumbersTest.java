@@ -100,4 +100,13 @@ public class NumbersTest {
         assertArrayEquals(new int[]{0, 0}, nu.subArraySum(new int[]{8}, 8));
         assertArrayEquals(new int[]{2, 3}, nu.subArraySum(new int[]{1, 2, 3, 5, 2}, 8));
     }
+
+    @Test
+    public void testPrefixSum() {
+        Numbers nu = new Numbers();
+        assertEquals(null, nu.prefixSum(null));
+        assertEquals(null, nu.prefixSum(new int[]{}));
+        assertEquals(null, nu.prefixSum(new int[]{1, 2, 3}));
+        assertArrayEquals(new int[]{1, 4}, nu.prefixSum(new int[]{2,4,-2,1,-3,5,-3}));
+    }
 }

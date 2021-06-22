@@ -24,7 +24,8 @@ Here is the list of algorithm problems and implementations:
 - [Find a subarray with maximum sum](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L250)
 - [Find a subarray that equals to the sum](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L300)
 - [Reverse words in a sentence](src/main/java/org/algorithms/lenin/strings/Strings.java#L12)
-- [Find longest unique substring](src/main/java/org/algorithms/lenin/strings/Strings.java#L142)
+- [Find longest unique substring](src/main/java/org/algorithms/lenin/strings/Strings.java#L172)
+- [Prefix sum: Given an array of integers, find the contiguous subarray that sums to 0.](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L416)
 ## Search
 - Find an item (number, object) in a sorted array (Generic Binary Search)
 - Search number in an array With duplicates
