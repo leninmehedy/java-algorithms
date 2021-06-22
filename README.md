@@ -6,7 +6,7 @@ For any given problem follow the steps bellow as you would do in professional se
  - Examples: Ask for examples
  - Clarify: Ask questions to clearify input-output and constraints
  - First Solution: Find a brute-force solution and estimate time/space complexity
- - Iterate: Iterate to find new solutions and their time/space complexity
+ - Iterate: Iterate to find improvements and their time/space complexity
  - Approval: Ask if the solution is OK to proceed with
  - Test cases: Think about test cases: Edge cases, Base cases and Regular cases
  - Code: Write the solution. Feel free to add comments in the code. Make it as neat and clean as possible.
