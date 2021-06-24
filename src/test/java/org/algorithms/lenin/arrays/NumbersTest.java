@@ -122,4 +122,15 @@ public class NumbersTest {
         assertEquals(null, nu.prefixSum(new int[]{1, 2, 3}));
         assertArrayEquals(new int[]{1, 4}, nu.prefixSum(new int[]{2,4,-2,1,-3,5,-3}));
     }
+
+    @Test
+    public void testFirstOccurence() {
+        Numbers nu = new Numbers();
+        assertEquals(-1, nu.firstOccurence(null, 3));
+        assertEquals(-1, nu.firstOccurence(new int[]{}, 3));
+        assertEquals(0, nu.firstOccurence(new int[]{3}, 3));
+        assertEquals(1, nu.firstOccurence(new int[]{1, 3}, 3));
+        assertEquals(1, nu.firstOccurence(new int[]{1, 3, 3, 3, 3}, 3));
+        assertEquals(2, nu.firstOccurence(new int[]{1, 2, 3, 3, 3, 3, 4, 5}, 3));
+    }
 }

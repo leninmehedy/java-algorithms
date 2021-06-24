@@ -30,7 +30,7 @@ Here is the list of algorithm problems and implementations:
 - [Prefix sum: Given an array of integers, find the contiguous subarray that sums to 0.](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L416)
 ## Search
 - [Find an item (number, object) in a sorted array (Generic Binary Search)](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L250)
-- Search number in an array With duplicates
+- [Search number in an array With duplicates](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L515)
 - Given a sorted array that can contain duplicates, find the first occurrence of a target element T
 - Given a sorted array A and a target T. Return the index where it would be placed ifinserted in order
 - Record and move on

@@ -497,6 +497,44 @@ public class Numbers {
     }
 
     /**
+     * Find the first occurance of a number in a sorted array
+     * Examples: [1, 2, 3, 3, 4, 5] and target=3, ans: 2
+     *
+     * Constraints:
+     *   - If number is not found, return -1
+     *   - if null or empty array, return -1
+     *   - integers only
+     *
+     * Solution: binary search with shifting left
+     * Complexity:
+     *   - Computation: O(log(n))
+     *   - Storage: O(1)
+     *
+     * Test cases:
+     */
+    public int firstOccurence(int[] a, int t) {
+        if (a == null || a.length == 0) {
+            return -1;
+        }
+
+        int low = 0;
+        int high = a.length - 1;
+        while(low <= high) {
+            int mid = low + (high - low)/2;
+            if (a[mid] > t || a[mid] == t && mid > 0 && a[mid - 1] == t) {
+                high = mid - 1;
+            } else if(a[mid] < t) {
+                low = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+
+
+        return -1;
+    }
+
+    /**
      *
      * Examples:
      *
