@@ -1,5 +1,6 @@
 package org.algorithms.lenin.arrays;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -533,6 +534,139 @@ public class Numbers {
 
         return -1;
     }
+
+    /**
+     * Find the last occurance of a number in a sorted array
+     * Examples: [1, 2, 3, 3, 4, 5] and target=3, ans: 3
+     *
+     * Constraints:
+     *   - If number is not found, return -1
+     *   - if null or empty array, return -1
+     *   - integers only
+     *
+     * Solution: binary search with shifting right 
+     * Complexity:
+     *   - Computation: O(log(n))
+     *   - Storage: O(1)
+     *
+     * Test cases:
+     */
+    public int lastOccurence(int[] a, int t) {
+        if (a == null || a.length == 0) {
+            return -1;
+        }
+
+        int low = 0;
+        int high = a.length - 1;
+        while(low <= high) {
+            int mid = low + (high - low)/2;
+            if (a[mid] > t) {
+                high = mid - 1;
+            } else if(a[mid] < t || a[mid] == t && mid < a.length - 1 && a[mid + 1] == t) {
+                low = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+
+
+        return -1;
+    }
+
+    /**
+     * Find the first insertion index of a number in a sorted array
+     * Examples: [1, 2, 4, 4, 4, 5] and target=3, ans: 2
+     *
+     * Constraints:
+     *   - If number is not found, return -1
+     *   - if null or empty array, return -1
+     *   - integers only
+     *
+     * Solution: binary search with shifting right 
+     * Complexity:
+     *   - Computation: O(log(n))
+     *   - Storage: O(1)
+     *
+     * Test cases:
+     */
+    public int firstInsertionIndex(int[] a, int t) {
+        if (a == null) {
+            return -1;
+        }
+
+        int low = 0;
+        int high = a.length - 1;
+
+        if (a.length == 0 || a[low] >= t) {
+            return low;
+        }
+
+        if (a[high] < t) {
+            return high;
+        }
+
+        while(low <= high) {
+            int mid = low + (high - low)/2;
+            if (a[mid] >= t) {
+                high = mid - 1;
+            } else if(a[mid] < t ) {
+                if (mid + 1 < a.length && a[mid + 1] >= t)  {
+                    return mid + 1; 
+                }
+                low = mid + 1;
+            }
+        }
+
+        throw new IllegalStateException(String.format("Shouldn't be here: %s , t: %d", Arrays.toString(a), t));
+    }
+
+    /**
+     * Find the last insertion index of a number in a sorted array
+     * Examples: [1, 2, 4, 4, 4, 5] and target=4, ans: 5
+     *
+     * Constraints:
+     *   - If number is not found, return -1
+     *   - if null or empty array, return -1
+     *   - integers only
+     *
+     * Solution: binary search with shifting right 
+     * Complexity:
+     *   - Computation: O(log(n))
+     *   - Storage: O(1)
+     *
+     * Test cases:
+     */
+    public int lastInsertionIndex(int[] a, int t) {
+        if (a == null) {
+            return -1;
+        }
+
+        int low = 0;
+        int high = a.length - 1;
+
+        if (a.length == 0 || a[low] > t) {
+            return low;
+        }
+
+        if (a[high] <= t) {
+            return high + 1;
+        }
+
+        while(low <= high) {
+            int mid = low + (high - low)/2;
+            if (a[mid] > t) {
+                high = mid - 1;
+            } else if(a[mid] <= t ) {
+                if (mid + 1 < a.length && a[mid + 1] > t)  {
+                    return mid + 1; 
+                }
+                low = mid + 1;
+            }
+        }
+
+        throw new IllegalStateException(String.format("Shouldn't be here: %s , t: %d", Arrays.toString(a), t));
+    }
+
 
     /**
      *

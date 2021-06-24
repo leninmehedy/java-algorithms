@@ -133,4 +133,37 @@ public class NumbersTest {
         assertEquals(1, nu.firstOccurence(new int[]{1, 3, 3, 3, 3}, 3));
         assertEquals(2, nu.firstOccurence(new int[]{1, 2, 3, 3, 3, 3, 4, 5}, 3));
     }
+
+    @Test
+    public void testLastOccurence() {
+        Numbers nu = new Numbers();
+        assertEquals(-1, nu.lastOccurence(null, 3));
+        assertEquals(-1, nu.lastOccurence(new int[]{}, 3));
+        assertEquals(0, nu.lastOccurence(new int[]{3}, 3));
+        assertEquals(1, nu.lastOccurence(new int[]{1, 3}, 3));
+        assertEquals(4, nu.lastOccurence(new int[]{1, 3, 3, 3, 3}, 3));
+        assertEquals(5, nu.lastOccurence(new int[]{1, 2, 3, 3, 3, 3, 4, 5}, 3));
+    }
+
+    @Test
+    public void testFindInsertionIndex() {
+        Numbers nu = new Numbers();
+        assertEquals(-1, nu.firstInsertionIndex(null, 3));
+        assertEquals(0, nu.firstInsertionIndex(new int[]{}, 3));
+        assertEquals(0, nu.firstInsertionIndex(new int[]{3}, 3));
+        assertEquals(1, nu.firstInsertionIndex(new int[]{1, 3}, 3));
+        assertEquals(1, nu.firstInsertionIndex(new int[]{1, 3, 3, 3, 3}, 3));
+        assertEquals(2, nu.firstInsertionIndex(new int[]{1, 2, 3, 3, 3, 3, 4, 5}, 3));
+    }
+
+    @Test
+    public void testLastInsertionIndex() {
+        Numbers nu = new Numbers();
+        assertEquals(-1, nu.lastInsertionIndex(null, 3));
+        assertEquals(0, nu.lastInsertionIndex(new int[]{}, 3));
+        assertEquals(1, nu.lastInsertionIndex(new int[]{3}, 3));
+        assertEquals(2, nu.lastInsertionIndex(new int[]{1, 3}, 3));
+        assertEquals(5, nu.lastInsertionIndex(new int[]{1, 3, 3, 3, 3}, 3));
+        assertEquals(6, nu.lastInsertionIndex(new int[]{1, 2, 3, 3, 3, 3, 4, 5}, 3));
+    }
 }
