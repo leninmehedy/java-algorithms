@@ -1,6 +1,7 @@
 package org.algorithms.lenin.arrays;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Numbers {
     /**
@@ -440,6 +441,56 @@ public class Numbers {
             }
 
             map.put(sum, i);
+        }
+
+        return null;
+    }
+
+    /**
+     * Find a pair of numbers in an unsorted array that equals to a given sum
+     *
+     * Example: [1, 5, 2, 4, 3] and 9 ==> indices [1, 3]
+     *
+     * Constraints:
+     *  - Can there be negatives? - Yes
+     *  - Can result be returned as an array? - Yes, the indices
+     *  - Can there be multiple pairs? Which one to return - Return the first one
+     *  - All integer? - Yes
+     *  - Sorted or unsorted? - Unsorted
+     *
+     *  Solution:
+     *      - Hashmap to store the difference and index
+     *      - Scan the array and see if the difference is in the hasmap
+     *      - If the difference is found, return the two indices
+     *
+     * Complexity:
+     *  - Computation: O(n)
+     *  - Storage: O(n)
+     *
+     * Test cases:
+     *  - Corner:
+     *      - Null or empty
+     *      - single element
+     *      - no pair found
+     *  - Base:
+     *      - two numbers
+     *      - three numbers
+     *  - Regular:
+     *      - more than three numbers with a single pair
+     *      - more than three numbers with a multiple pair
+     *
+     */
+    public int[] twoSumUnsorted(int[] s, int sum) {
+        if (s == null || s.length == 0) return null;
+        Map<Integer, Integer> candidates = new HashMap<>();
+        candidates.put(s[0], 0);
+        for (int i = 1; i < s.length; i++) {
+            int diff = sum - s[i];
+            if (candidates.containsKey(diff)) {
+                return new int[]{candidates.get(diff), i};
+            }
+            
+            candidates.put(s[i], i);
         }
 
         return null;

@@ -3,6 +3,8 @@ package org.algorithms.lenin.arrays;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+
 public class NumbersTest {
 
     @Test
@@ -24,6 +26,17 @@ public class NumbersTest {
         assertArrayEquals(new int[]{1, 2}, nu.twoSum(new int[]{1, 2}, 3));
         assertArrayEquals(new int[]{2, 3}, nu.twoSum(new int[]{1, 2, 3}, 5));
         assertArrayEquals(new int[]{1, 6}, nu.twoSum(new int[]{1, 2, 3, 4, 5, 6}, 7));
+    }
+
+    @Test
+    public void testTwoSumUnsorted() {
+        Numbers nu = new Numbers();
+        assertArrayEquals(null, nu.twoSumUnsorted(null, 9));
+        assertArrayEquals(null, nu.twoSumUnsorted(new int[]{}, 9));
+        assertArrayEquals(null, nu.twoSumUnsorted(new int[]{9}, 9));
+        assertArrayEquals(new int[]{0, 1}, nu.twoSumUnsorted(new int[]{1, 2}, 3));
+        assertArrayEquals(new int[]{0, 2}, nu.twoSumUnsorted(new int[]{1, 2, -3}, -2));
+        assertArrayEquals(new int[]{2, 3}, nu.twoSumUnsorted(new int[]{1, 5, 3, 4, 2, 6}, 7));
     }
 
 

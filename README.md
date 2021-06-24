@@ -16,20 +16,23 @@ Here is the list of algorithm problems and implementations:
 
 ## Arrays and Strings I
 - [Clone even numbers in the array](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L5)
-- [Find a pair that equals to the given sum](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L54)
-- [Rearrange all zeros (or num) at the start](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L109)
-- [Rearrange all zeros (num) at the end](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L156)
-- [Swap two numbers in an array without temporary variable](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L224)
+- [Find a pair that equals to the given sum in a sorted array](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L93)
+- [Rearrange all zeros (or num) at the start](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L140)
+- [Rearrange all zeros (num) at the end](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L160)
+- [Swap two numbers in an array without temporary variable](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L228)
 - [Arrange numbers in three groups based on pivot (Dutch Flag)](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L178)
 - [Reverse words in a sentence](src/main/java/org/algorithms/lenin/strings/Strings.java#L12)
 - [Find longest unique substring](src/main/java/org/algorithms/lenin/strings/Strings.java#L172)
+- [Find a pair that equals to the given sum in an unsorted array](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L483)
 ## Subarray Problems
 - [Find a subarray with maximum sum](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L250)
 - [Find a subarray that equals to the sum](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L300)
 - [Prefix sum: Given an array of integers, find the contiguous subarray that sums to 0.](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L416)
 ## Search
-- Find an item (number, object) in a sorted array (Generic Binary Search)
+- [Find an item (number, object) in a sorted array (Generic Binary Search)](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L250)
 - Search number in an array With duplicates
+- Given a sorted array that can contain duplicates, find the first occurrence of a target element T
+- Given a sorted array A and a target T. Return the index where it would be placed ifinserted in order
 - Record and move on
 - Special tricks
 ## Recursion & Backtracking
