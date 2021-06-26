@@ -166,4 +166,29 @@ public class NumbersTest {
         assertEquals(5, nu.lastInsertionIndex(new int[]{1, 3, 3, 3, 3}, 3));
         assertEquals(6, nu.lastInsertionIndex(new int[]{1, 2, 3, 3, 3, 3, 4, 5}, 3));
     }
+
+    @Test
+    public void testClosestFirstMatch() {
+        Numbers nu = new Numbers();
+        assertEquals(-1, nu.closestFirstMatch(null, 3));
+        assertEquals(-1, nu.closestFirstMatch(new int[]{}, 3));
+        assertEquals(0, nu.closestFirstMatch(new int[]{3}, 3));
+        assertEquals(1, nu.closestFirstMatch(new int[]{1, 3}, 3));
+        assertEquals(0, nu.closestFirstMatch(new int[]{1, 5}, 3));
+        assertEquals(2, nu.closestFirstMatch(new int[]{1, 3, 4, 5, 6}, 4));
+        assertEquals(2, nu.closestFirstMatch(new int[]{1, 3, -4, 5, 6}, 4));
+    }
+
+    @Test
+    public void testClosestLastMatch() {
+        Numbers nu = new Numbers();
+        assertEquals(-1, nu.closestLastMatch(null, 3));
+        assertEquals(-1, nu.closestLastMatch(new int[]{}, 3));
+        assertEquals(0, nu.closestLastMatch(new int[]{3}, 3));
+        assertEquals(1, nu.closestLastMatch(new int[]{1, 3}, 3));
+        assertEquals(0, nu.closestLastMatch(new int[]{1, 5}, 3));
+        assertEquals(2, nu.closestLastMatch(new int[]{1, 3, 4, 5, 6, 7}, 4));
+        assertEquals(2, nu.closestLastMatch(new int[]{1, 3, 5, 6, 7}, 4));
+        assertEquals(3, nu.closestLastMatch(new int[]{1, 3, -4, 5, 6}, 4));
+    }
 }

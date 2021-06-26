@@ -667,6 +667,111 @@ public class Numbers {
         throw new IllegalStateException(String.format("Shouldn't be here: %s , t: %d", Arrays.toString(a), t));
     }
 
+    /**
+     * Given a sorted array of Integers, find the target. 
+     * If the target is not found,return the smallest element that is closest to the target.
+     * 
+     * Examples: Given, A = [1,2,4,5,7,8,9], Target = 6 -> Output Index = 3 (since both 5 and 7 are equally close)
+     *
+     * Constraints:
+     *   - What is the output: return index
+     *   - What if there are multiple, which one to return: Return the first
+     *   - If array is null or empty: Return -1
+     *   - Will there be any negative? Yes.
+     *
+     * Solution: Binary search. Record the smallest found so far and move on. Return the closest found
+     * Complexity:
+     *   - Computation: O(log(N))
+     *   - Storage: O(1)
+     *
+     * Test cases:
+     *  - Empty or null array
+     *  - Single element array with the target
+     *  - Single element array with a number other than target
+     *  - Three elements array with the target
+     *  - Three elements array with multiple answers
+     *  - Multiple elements array with single match
+     *  - Multiple elements array with multiple answers 
+     *  - Multiple elements array with negatives and multiple answers 
+     */
+    public int closestFirstMatch(int[] a, int t) {
+        if (a == null || a.length == 0) {
+            return -1;
+        }
+
+        int closest = -1;
+        int low = 0;
+        int high = a.length - 1;
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+            if (closest == -1 || (Math.abs(a[mid] - t) < Math.abs(a[closest] - t) && a[closest] > a[mid])) {
+                closest = mid;
+            }
+
+            if (a[mid] > t) {
+                high = mid - 1;
+            } else if (a[mid] < t) {
+                low = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+
+        return closest;
+    }
+
+    /**
+     * Given a sorted array of Integers, find the target. 
+     * If the target is not found,return the largest element that is closest to the target.
+     * 
+     * Examples: Given, A = [1,2,4,5,7,8,9], Target = 6 -> Output Index = 4 (since both 5 and 7 are equally close)
+     *
+     * Constraints:
+     *   - What is the output: return index
+     *   - What if there are multiple, which one to return: Return the first
+     *   - If array is null or empty: Return -1
+     *   - Will there be any negative? Yes.
+     *
+     * Solution: Binary search. Record the smallest found so far and move on. Return the closest found
+     * Complexity:
+     *   - Computation: O(log(N))
+     *   - Storage: O(1)
+     *
+     * Test cases:
+     *  - Empty or null array
+     *  - Single element array with the target
+     *  - Single element array with a number other than target
+     *  - Three elements array with the target
+     *  - Three elements array with multiple answers
+     *  - Multiple elements array with single match
+     *  - Multiple elements array with multiple answers 
+     *  - Multiple elements array with negatives and multiple answers 
+     */
+    public int closestLastMatch(int[] a, int t) {
+        if (a == null || a.length == 0) {
+            return -1;
+        }
+
+        int closest = -1;
+        int low = 0;
+        int high = a.length - 1;
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+            if (closest == -1 || (Math.abs(a[mid] - t) < Math.abs(a[closest] - t) && a[closest] < a[mid])) {
+                closest = mid;
+            }
+
+            if (a[mid] > t) {
+                high = mid - 1;
+            } else if (a[mid] < t) {
+                low = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+
+        return closest;
+    }
 
     /**
      *

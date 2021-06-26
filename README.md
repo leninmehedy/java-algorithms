@@ -28,13 +28,14 @@ Here is the list of algorithm problems and implementations:
 - [Find a subarray with maximum sum](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L250)
 - [Find a subarray that equals to the sum](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L300)
 - [Prefix sum: Given an array of integers, find the contiguous subarray that sums to 0.](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L416)
-## Search
+## Binary Search
 - [Find an item (number, object) in a sorted array (Generic Binary Search)](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L250)
 - [Given a sorted array that can contain duplicates, find the first occurrence of a target element T](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L515)
 - [Given a sorted array that can contain duplicates, find the last occurrence of a target element T](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L553)
 - [Given a sorted array A and a target T. Return the first index where it would be placed if inserted in order](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L592)
 - [Given a sorted array A and a target T. Return the last index where it would be placed if inserted in order](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L693)
-- Record and move on
+- [Given a sorted array A and a target T, find the target. If the target is not in the array, find the smallest number closest to the target](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L693)
+- [Given a sorted array A and a target T, find the target. If the target is not in the array, find the largest number in the order closest to the target](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L693)
 - Special tricks
 ## Recursion & Backtracking
 - Memoization
