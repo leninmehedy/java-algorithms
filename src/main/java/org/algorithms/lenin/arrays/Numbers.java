@@ -860,6 +860,84 @@ public class Numbers {
     }
 
     /**
+     * Given an array of unknown length, find the target in O(log(n))
+     * 
+     * Constraints:
+     *    - What is max length of the array? 1M 
+     *
+     * Solution: Find the length using binary search and then search within that array range
+     * Complexity:
+     *   - Computation: O(log(n))
+     *   - Storage: O(1)
+     *
+     * Test cases:
+     */
+    public int findWithUnknownLength(int[] a, int t) {
+        if (a == null || a.length == 0) {
+            return -1;
+        }
+
+        int high = 1;
+        while(high < 1000000) {
+            try {
+                int v = a[high]; // try to access
+            } catch(ArrayIndexOutOfBoundsException e) {
+                high = binarySearchArrayLastIndex(a, high/2, high);
+                break;
+            }
+            high = high * 2;
+        }
+
+        return binarySearchWithRange(a, t, 0, high);
+    }
+
+    public int binarySearchArrayLastIndex(int[] a, int low, int high) {
+        if (a == null || a.length == 0) {
+            return 0;
+        }
+
+        while(low <= high) {
+            int mid = low + (high - low)/2;
+
+            try {
+                int v = a[mid]; // try to access
+            } catch(ArrayIndexOutOfBoundsException e) {
+                high = mid - 1;
+            }
+
+            // if mid+1 is outside the array, then mid is the last index
+            try {
+                System.out.println(a[mid + 1]);
+            } catch(ArrayIndexOutOfBoundsException e) {
+                return mid;
+            }
+
+            low = mid + 1;
+        }
+
+        return -1;
+    }
+
+    public int binarySearchWithRange(int[] a, int t, int low, int high) {
+        if (a == null || a.length == 0) {
+            return 0;
+        }
+
+        while(low <= high) {
+            int mid = low + (high - low)/2;
+            if (a[mid] > t) {
+                high = mid - 1;
+            } else if (a[mid] < t) {
+                low = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
      *
      * Examples:
      *

@@ -215,4 +215,15 @@ public class NumbersTest {
         assertEquals(0, nu.cyclicallySortedMax(new int[]{3, 1, 2}));
         assertEquals(2, nu.cyclicallySortedMax(new int[]{5, 7, 8, 1, 2, 4}));
     }
+
+    @Test
+    public void testFindWithUnknownLength() {
+        Numbers nu = new Numbers();
+        assertEquals(-1, nu.findWithUnknownLength(null, 3));
+        assertEquals(-1, nu.findWithUnknownLength(new int[]{}, 3));
+        assertEquals(0, nu.findWithUnknownLength(new int[]{3}, 3));
+        assertEquals(1, nu.findWithUnknownLength(new int[]{1, 3}, 3));
+        assertEquals(0, nu.findWithUnknownLength(new int[]{1, 3}, 1));
+        assertEquals(3, nu.findWithUnknownLength(new int[]{1, 2, 4, 5, 7, 8}, 5));
+    }
 }
