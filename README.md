@@ -33,10 +33,13 @@ Here is the list of algorithm problems and implementations:
 - [Given a sorted array that can contain duplicates, find the first occurrence of a target element T](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L515)
 - [Given a sorted array that can contain duplicates, find the last occurrence of a target element T](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L553)
 - [Given a sorted array A and a target T. Return the first index where it would be placed if inserted in order](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L592)
-- [Given a sorted array A and a target T. Return the last index where it would be placed if inserted in order](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L693)
-- [Given a sorted array A and a target T, find the target. If the target is not in the array, find the smallest number closest to the target](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L693)
-- [Given a sorted array A and a target T, find the target. If the target is not in the array, find the largest number in the order closest to the target](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L693)
-- Special tricks
+- [Given a sorted array A and a target T. Return the last index where it would be placed if inserted in order](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L639)
+- [Given a sorted array A and a target T, find the target. If the target is not in the array, find the smallest number closest to the target](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L697)
+- [Given a sorted array A and a target T, find the target. If the target is not in the array, find the largest number in the order closest to the target](src/main/java/org/algorithms/lenin/arrays/Numbers.java#L750)
+- [Given a sorted array A that has been rotated in a cycle, find the smallest element of the array in O(log(n)) time]()
+- [Given a sorted array whose length is not known, perform binary search for a target T. Do the search in O(log(n)) time]()
+- [Find the square root of an integer X. For example, squareRoot(4) = 2. It is ok to find the integer floor of the square root. So squareRoot(5) or squareRoot(8) can also return 2. squareRoot(9) will return 3.]()
+- [Find the peak: A peak element in array A is an A[i] where its adjacent elements are less than A[i]. So, A[i - 1] < A[i] and A[i + 1] < A[i].]()
 ## Recursion & Backtracking
 - Memoization
 - Auxiliary Buffers

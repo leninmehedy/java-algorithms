@@ -774,6 +774,92 @@ public class Numbers {
     }
 
     /**
+     * Given a sorted array A that has been rotated in a cycle, find the smallest element of the array in O(log(n)) time
+     * Examples: [1,2,4,5,7,8] rotated by 3 gives us A = [5,7,8,1,2,4] and the smallest number is 1.
+     *
+     * Questions
+     *  - Will there be an duplicates? No
+     *  - What should be returned? the index
+     *  - What to return for null or empty array: -1
+     * 
+     * Solution:
+     *   - Last element is the hint for two groups
+     *   - If the current element is less then it is in Group1, otherwise Group2. We move to Group1 for the smallest number
+     *   - The smallest number is at 0 or smaller than its left-hand-side number
+     * 
+     * Complexity:
+     *   - Computation: O(log(n))
+     *   - Storage: O(1)
+     *
+     * Test cases:
+     */
+    public int cyclicallySortedMin(int[] a) {
+        if (a == null || a.length == 0) {
+            return -1;
+        }
+
+        int low = 0;
+        int high = a.length -1;
+        int right = a[a.length - 1];
+
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+            if (a[mid] <= right && (mid == 0 || a[mid - 1] > a[mid])) {
+                return mid;
+            } else if (a[mid] > right) {
+                low = mid + 1; // Group1
+            } else {
+                high = mid - 1; // Group2
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * Given a sorted array A that has been rotated in a cycle, find the largest element of the array in O(log(n)) time
+     * Examples: [1,2,4,5,7,8] rotated by 3 gives us A = [5,7,8,1,2,4] and the smallest number is 8.
+     *
+     * Questions
+     *  - Will there be an duplicates? No
+     *  - What should be returned? the index
+     *  - What to return for null or empty array: -1
+     * 
+     * Solution:
+     *   - Last element is the hint for two groups
+     *   - If the current element is less then it is in Group1, otherwise Group2. We move to Group2 for the largest number
+     *   - The smallest number is at arrray.lengt - 1 or lager than its right-hand-side number
+     * 
+     * Complexity:
+     *   - Computation: O(log(n))
+     *   - Storage: O(1)
+     *
+     * Test cases:
+     */
+    public int cyclicallySortedMax(int[] a) {
+        if (a == null || a.length == 0) {
+            return -1;
+        }
+
+        int low = 0;
+        int high = a.length -1;
+        int left = a[0];
+
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+            if (a[mid] >= left && (mid == a.length - 1 || a[mid + 1] < a[mid])) {
+                return mid;
+            } else if (a[mid] < left) {
+                high = mid - 1; // Group2
+            } else {
+                low = mid + 1; // Group1
+            }
+        }
+
+        return -1;
+    }
+
+    /**
      *
      * Examples:
      *

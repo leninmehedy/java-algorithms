@@ -191,4 +191,28 @@ public class NumbersTest {
         assertEquals(2, nu.closestLastMatch(new int[]{1, 3, 5, 6, 7}, 4));
         assertEquals(3, nu.closestLastMatch(new int[]{1, 3, -4, 5, 6}, 4));
     }
+
+    @Test
+    public void testCyclicallySortedMin() {
+        Numbers nu = new Numbers();
+        assertEquals(-1, nu.cyclicallySortedMin(null));
+        assertEquals(-1, nu.cyclicallySortedMin(new int[]{}));
+        assertEquals(0, nu.cyclicallySortedMin(new int[]{3}));
+        assertEquals(0, nu.cyclicallySortedMin(new int[]{1, 3}));
+        assertEquals(1, nu.cyclicallySortedMin(new int[]{3, 1}));
+        assertEquals(1, nu.cyclicallySortedMin(new int[]{3, 1, 2}));
+        assertEquals(3, nu.cyclicallySortedMin(new int[]{5, 7, 8, 1, 2, 4}));
+    }
+
+    @Test
+    public void testCyclicallySortedMax() {
+        Numbers nu = new Numbers();
+        assertEquals(-1, nu.cyclicallySortedMax(null));
+        assertEquals(-1, nu.cyclicallySortedMax(new int[]{}));
+        assertEquals(0, nu.cyclicallySortedMax(new int[]{3}));
+        assertEquals(1, nu.cyclicallySortedMax(new int[]{1, 3}));
+        assertEquals(0, nu.cyclicallySortedMax(new int[]{3, 1}));
+        assertEquals(0, nu.cyclicallySortedMax(new int[]{3, 1, 2}));
+        assertEquals(2, nu.cyclicallySortedMax(new int[]{5, 7, 8, 1, 2, 4}));
+    }
 }
