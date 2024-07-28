@@ -1,5 +1,5 @@
 # Algorithms in Java
-This repository contains various algorithm and data structure implementations in Java 8 that I have been practising recently.
+This repository contains various algorithm and data structure implementations in Java 8 that I have been practising a while ago.
 
 # Interview Steps
 For any given problem follow the steps bellow as you would do in professional settings:
