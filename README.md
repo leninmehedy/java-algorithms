@@ -1,7 +1,7 @@
 # Algorithms in Java
 This repository contains various algorithm and data structure implementations in Java 8.
 
-# Interview Steps
+# Steps
 For any given problem follow the steps bellow as you would do in professional settings:
  - Examples: Ask for examples
  - Clarify: Ask questions to clarify input-output and constraints
